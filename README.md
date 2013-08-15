@@ -34,7 +34,7 @@ Initialize the plugin targeting the class, ID or element that contains the text 
 <br />An integer that defines the words per minute at which to calculate the estimated reading time (default: 270).
 
 4. round: boolean
-<br />A bollean value that indicates whether or not the estimated reading time should be rounded to the closest minute (default: true).
+<br />A boolean value that indicates whether or not the estimated reading time should be rounded to the closest minute (default: true).
 
 #####Example:
 
