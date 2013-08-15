@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html>
+
+	<head>
+	
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		
+		<meta charset="utf-8">
+	
+		<title>Estimated Reading Time jQuery Plugin</title>
+		
+		<meta name="description" content="A simple, lightweight jQuery plugin used to display an estimated time to read some text.">
+		
+		<meta name="author" content="http://michaelynch.com">
+	
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		
+		<style>
+		
+		/* for pesentation only */
+		
+		body {
+			font: 18px Georgia, Times, "Times New Roman", serif;
+			line-height: 28px;
+			color: #333;
+			margin: 80px 10%;
+			max-width: 800px;
+			width: 80%;
+		}
+		
+		h1 {
+			font: 36px "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+			margin: 0;
+		}
+		
+		small, a {
+			font: 14px "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+			text-transform: uppercase;
+			color: #333;
+		}
+		
+		p {
+			margin: 0 0 15px 0;
+		}
+		
+		</style>
+		
+	</head>
+
+	<body lang="en">
+
+		<article>
+		
+			<h1>The Long Tail (excerpt)</h1>
+			
+			<p><em>By: Chris Anderson</em></p>
+			
+			<p><small><span id="eta"></span> (<span id="words"></span> words)</small></p>
+	
+			<p>In 1988, a British mountain climber named Joe Simpson wrote a book called Touching the Void, a harrowing account of near death in the 
+			Peruvian Andes. It got good reviews but, only a modest success, it was soon forgotten. Then, a decade later, a strange thing happened. Jon Krakauer 
+			wrote Into Thin Air, another book about a mountain-climbing tragedy, which became a publishing sensation. Suddenly Touching the Void started to sell again.</p>
+
+			<p>Random House rushed out a new edition to keep up with demand. Booksellers began to promote it next to their Into Thin Air displays, and sales rose further. A revised paperback 
+			edition, which came out in January, spent 14 weeks on the New York Times bestseller list. That same month, IFC Films released a docudrama of the story to critical acclaim. Now 
+			Touching the Void outsells Into Thin Air more than two to one.</p>
+
+			<p>What happened? In short, Amazon.com recommendations. The online bookseller's software noted patterns in buying behavior and suggested that readers who liked 
+			Into Thin Air would also like Touching the Void. People took the suggestion, agreed wholeheartedly, wrote rhapsodic reviews. More sales, more algorithm-fueled recommendations, 
+			and the positive feedback loop kicked in.</p>
+			
+		</article>
+		
+		<p><em><a href="http://www.wired.com/wired/archive/12.10/tail.html" target="_blank">http://www.wired.com/wired/archive/12.10/tail.html</a></em></p>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	
+		<script type="text/javascript">
+		if (typeof jQuery == 'undefined') {
+		    document.write(unescape("%3Cscript src='../src/lib/jquery.1.9.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+		}
+		</script>
+		
+		<script src="../src/estimatedReadingTime.js"></script>
+		
+		<script>
+		
+			$(function() {
+			
+				$('article').estimatedReadingTime({
+					readingTimeTarget: 'eta',
+					wordCountTarget: 'words',
+					readingSpeed: 275,
+					round: true,
+				});
+				
+			});
+		
+		</script>
+
+	</body>
+	
+</html>
