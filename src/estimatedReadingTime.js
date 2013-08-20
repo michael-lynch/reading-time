@@ -55,10 +55,10 @@ Licensed under the MIT license
 		var totalReadingTimeSeconds = totalWords / wordsPerSecond;
 		
 		//define reading time in minutes
-		var readingTimeMinutes = Math.floor(totalReadingTimeSeconds / 60);
+		var readingTimeMinutes = Math.round(totalReadingTimeSeconds / 60);
 		
 		//define remaining reading time seconds
-		var readingTimeSeconds = Math.floor(totalReadingTimeSeconds - readingTimeMinutes * 60);
+		var readingTimeSeconds = Math.round(totalReadingTimeSeconds - readingTimeMinutes * 60);
 		
 		//if round is set to true
 		if(round === true) {
