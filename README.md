@@ -2,6 +2,8 @@
 
 A simple, lightweight jQuery plugin used to display an estimated time to read some text.
 
+<a href="http://michael-lynch.github.io/estimated-reading-time/" target="_blank">See a demo</a>
+
 ##Instructions
 
 Include jQuery and the plugin in the head or footer of your page.
