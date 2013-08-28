@@ -1,4 +1,4 @@
-/*
+/*!
 
 Name: Estimated Reading Time
 Dependencies: jQuery

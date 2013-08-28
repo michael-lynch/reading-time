@@ -20,23 +20,32 @@ Optionally you can create an element with whatever class or ID you want to displ
 
 	<div id="word-count"></div>
     
-Initialize the plugin targeting the class, ID or element that contains the text in which you want to estimate the reading time for. 
+Initialize the plugin targeting the class, ID or element that contains the text in which you want to estimate the reading time of. 
 
 	$('article').estimatedReadingTime();
 	
 ####Options
 
-1. readingTimeTarget: "id"
+<ol>
+
+<li>
+readingTimeTarget: "id"
 <br />A string that defines the ID of the element that will store the estimated reading time (default: 'eta').
+</li>
 
-2. wordCountTarget: "id"
+<li>wordCountTarget: "id"
 <br />A string that defines the ID of the element that will store the total word count (default: ''). 
+</li>
 
-3. readingSpeed: integer
+<li>readingSpeed: integer
 <br />An integer that defines the words per minute at which to calculate the estimated reading time (default: 270).
+</li>
 
-4. round: boolean
+<li>round: boolean
 <br />A boolean value that indicates whether or not the estimated reading time should be rounded to the closest minute (default: true).
+</li>
+
+</ol>
 
 #####Example:
 
