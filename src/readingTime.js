@@ -1,6 +1,6 @@
 /*!
 
-Name: Estimated Reading Time
+Name: Reading Time
 Dependencies: jQuery
 Author: Michael Lynch
 Author URL: http://michaelynch.com
@@ -11,7 +11,7 @@ Licensed under the MIT license
 
 ;(function($) {
 
-    $.fn.estimatedReadingTime = function(options) {
+    $.fn.readingTime = function(options) {
     
     	//return if no element was bound
 		//so chained events can continue

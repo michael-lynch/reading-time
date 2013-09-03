@@ -1,4 +1,4 @@
-#Estimated Reading Time
+#Reading Time
 
 A simple, lightweight jQuery plugin used to display an estimated time to read some text.
 
@@ -10,7 +10,7 @@ Include jQuery and the plugin in the head or footer of your page.
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     
-    <script src="/js/plugins/estimatedReadingTime.js"></script>
+    <script src="/js/plugins/readingTime.js"></script>
     
 Create an element on your page with the ID of 'eta' where the estimated reading time will display.
 
@@ -22,7 +22,7 @@ Optionally you can create an element with whatever class or ID you want to displ
     
 Initialize the plugin targeting the class, ID or element that contains the text in which you want to estimate the reading time of. 
 
-	$('article').estimatedReadingTime();
+	$('article').readingTime();
 	
 ####Options
 
@@ -51,7 +51,7 @@ readingTimeTarget: "id"
 
 		$(function() {
 			
-				$('article').estimatedReadingTime({
+				$('article').readingTime({
 					readingTimeTarget: 'reading-time',
 					wordCountTarget: 'word-count',
 					readingSpeed: 275,
