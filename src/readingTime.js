@@ -49,21 +49,21 @@ Licensed under the MIT license
         
         	var lessThanAMinute = "Moins d'une minute";
         	
-        	var minShortForm = 'Min';
+        	var minShortForm = 'min';
 	     
 	     //if lang is set to german  
         } else if(lang == 'de') {
 	        
 	        var lessThanAMinute = "Weniger als eine Minute";
 	        
-	        var minShortForm = 'Min';
+	        var minShortForm = 'min';
 	    
 	    //default lang is english
         } else {
 	        
 	        var lessThanAMinute = 'Less than a minute';
 	        
-	        var minShortForm = 'Min';
+	        var minShortForm = 'min';
 	        
         }
 
@@ -108,7 +108,7 @@ Licensed under the MIT license
 			var readingTime = readingTimeMinutes + ':' + readingTimeSeconds;
 			
 			//set reading time in minutes and seconds
-			$('#'+readingTimeTarget).text(readingTime + ' Min');
+			$('#'+readingTimeTarget).text(readingTime);
 			
 		}
 
