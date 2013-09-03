@@ -1,0 +1,66 @@
+<!doctype html>
+
+<html>
+
+	<head>
+	
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		
+		<meta charset="utf-8">
+	
+		<title>Reading Time jQuery Plugin</title>
+		
+		<meta name="description" content="A simple, lightweight jQuery plugin used to display an estimated time to read some text.">
+		
+		<meta name="author" content="http://michaelynch.com">
+	
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		
+		<!-- for pesentation only -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+		
+	</head>
+
+	<body lang="en">
+
+		<article>
+		
+			<a href="index.html"><h1>Dethroning King Coal</h1></a>
+			
+			<p><em>By: Peter Singer</em></p>
+			
+			<p><small><span id="eta"></span> (<span id="words"></span> words)</small></p>
+	
+			<p>Earlier this year, the concentration of carbon dioxide in the atmosphere reached 400 parts per million (ppm). The last time there was that much CO2 in our atmosphere was 
+			three million years ago, when sea levels were 24 meters higher than they are today. Now sea levels are rising again. Last September, Arctic sea ice covered the smallest area 
+			ever recorded. All but one of the ten warmest years since 1880, when global records began to be kept, have occurred in the twenty-first century.</p>
+			
+		</article>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	
+		<script type="text/javascript">
+		if (typeof jQuery == 'undefined') {
+		    document.write(unescape("%3Cscript src='js/lib/jquery.1.9.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+		}
+		</script>
+		
+		<script src="js/readingTime.min.js"></script>
+		
+		<script>
+		
+			$(function() {
+				
+				$('body').readingTime({
+					wordCountTarget: 'words',
+					remotePath: 'index.html',
+					remoteTarget: 'my-article'
+				});
+				
+			});
+		
+		</script>
+
+	</body>
+	
+</html>
