@@ -45,6 +45,10 @@ readingTimeTarget: "id"
 <br />A boolean value that indicates whether or not the estimated reading time should be rounded to the closest minute (default: true).
 </li>
 
+<li>lang: "en / fr / de"
+<br />A two letter string that indicates the language to be used (default: "en").
+</li>
+
 </ol>
 
 #####Example:
@@ -56,6 +60,7 @@ readingTimeTarget: "id"
 					wordCountTarget: 'word-count',
 					readingSpeed: 275,
 					round: false,
+					lang: 'fr',
 				});
 				
 			});

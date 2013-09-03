@@ -24,7 +24,8 @@ Licensed under the MIT license
 	        readingTimeTarget: 'eta',
 	        wordCountTarget: '',
 	        readingSpeed: 270,
-	        round: true
+	        round: true,
+	        lang: 'en'
         }
         
         //define plugin
@@ -41,6 +42,30 @@ Licensed under the MIT license
         var wordCountTarget = plugin.settings.wordCountTarget;
         var readingSpeed = plugin.settings.readingSpeed;
         var round = plugin.settings.round;
+        var lang = plugin.settings.lang;
+
+        //if lang is set to french
+        if(lang == 'fr') {
+        
+        	var lessThanAMinute = "Moins d'une minute";
+        	
+        	var minShortForm = 'Min';
+	     
+	     //if lang is set to german  
+        } else if(lang == 'de') {
+	        
+	        var lessThanAMinute = "Weniger als eine Minute";
+	        
+	        var minShortForm = 'Min';
+	    
+	    //default lang is english
+        } else {
+	        
+	        var lessThanAMinute = 'Less than a minute';
+	        
+	        var minShortForm = 'Min';
+	        
+        }
 
         //define text
         var text = el.text();
@@ -67,12 +92,12 @@ Licensed under the MIT license
 			if(readingTimeMinutes > 0) {
 		
 				//set reading time by the minute
-				$('#'+readingTimeTarget).text(readingTimeMinutes + ' Min');
+				$('#'+readingTimeTarget).text(readingTimeMinutes + ' ' + minShortForm);
 			
 			} else {
 				
 				//set reading time as less than a minute
-				$('#'+readingTimeTarget).text('Less than a minute');
+				$('#'+readingTimeTarget).text(lessThanAMinute);
 				
 			}
 		
