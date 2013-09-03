@@ -23,9 +23,11 @@ Licensed under the MIT license
         var defaults = {
 	        readingTimeTarget: 'eta',
 	        wordCountTarget: '',
-	        readingSpeed: 270,
+	        wordsPerMinute: 270,
 	        round: true,
-	        lang: 'en'
+	        lang: 'en',
+	        remotePath: null,
+	        remoteTarget: null
         }
         
         //define plugin
@@ -40,10 +42,12 @@ Licensed under the MIT license
         //define vars
         var readingTimeTarget = plugin.settings.readingTimeTarget;
         var wordCountTarget = plugin.settings.wordCountTarget;
-        var readingSpeed = plugin.settings.readingSpeed;
+        var wordsPerMinute = plugin.settings.wordsPerMinute;
         var round = plugin.settings.round;
         var lang = plugin.settings.lang;
-
+        var remotePath = plugin.settings.remotePath;
+        var remoteTarget = plugin.settings.remoteTarget;
+        
         //if lang is set to french
         if(lang == 'fr') {
         
@@ -66,61 +70,79 @@ Licensed under the MIT license
 	        var minShortForm = 'min';
 	        
         }
+        
+        var setTime = function(text) {
 
-        //define text
-        var text = el.text();
-
-        //split text by spaces to define total words
-		var totalWords = text.split(' ').length;
-		
-		//define words per second based on words per minute (readingSpeed)
-		var wordsPerSecond = readingSpeed / 60;
-		
-		//define total reading time in seconds
-		var totalReadingTimeSeconds = totalWords / wordsPerSecond;
-		
-		//define reading time in minutes
-		var readingTimeMinutes = Math.round(totalReadingTimeSeconds / 60);
-		
-		//define remaining reading time seconds
-		var readingTimeSeconds = Math.round(totalReadingTimeSeconds - readingTimeMinutes * 60);
-		
-		//if round is set to true
-		if(round === true) {
+	        //split text by spaces to define total words
+			var totalWords = text.split(' ').length;
 			
-			//if minutes are greater than 0
-			if(readingTimeMinutes > 0) {
-		
-				//set reading time by the minute
-				$('#'+readingTimeTarget).text(readingTimeMinutes + ' ' + minShortForm);
+			//define words per second based on words per minute (wordsPerMinute)
+			var wordsPerSecond = wordsPerMinute / 60;
 			
-			} else {
+			//define total reading time in seconds
+			var totalReadingTimeSeconds = totalWords / wordsPerSecond;
+			
+			//define reading time in minutes
+			var readingTimeMinutes = Math.round(totalReadingTimeSeconds / 60);
+			
+			//define remaining reading time seconds
+			var readingTimeSeconds = Math.round(totalReadingTimeSeconds - readingTimeMinutes * 60);
+			
+			//if round is set to true
+			if(round === true) {
 				
-				//set reading time as less than a minute
-				$('#'+readingTimeTarget).text(lessThanAMinute);
+				//if minutes are greater than 0
+				if(readingTimeMinutes > 0) {
+			
+					//set reading time by the minute
+					$('#'+readingTimeTarget).text(readingTimeMinutes + ' ' + minShortForm);
+				
+				} else {
+					
+					//set reading time as less than a minute
+					$('#'+readingTimeTarget).text(lessThanAMinute);
+					
+				}
+			
+			//if round is set to false	
+			} else {
+			
+				//format reading time
+				var readingTime = readingTimeMinutes + ':' + readingTimeSeconds;
+				
+				//set reading time in minutes and seconds
+				$('#'+readingTimeTarget).text(readingTime);
 				
 			}
-		
-		//if round is set to false	
-		} else {
-		
-			//format reading time
-			var readingTime = readingTimeMinutes + ':' + readingTimeSeconds;
+	
+			//if word count container isn't blank or undefined
+			if(wordCountTarget !== '' && wordCountTarget !== undefined) {
 			
-			//set reading time in minutes and seconds
-			$('#'+readingTimeTarget).text(readingTime);
+				//set word count
+				$('#'+wordCountTarget).text(totalWords);
 			
-		}
-
-		//if word count container isn't blank or undefined
-		if(wordCountTarget !== '' && wordCountTarget !== undefined) {
+			}
 		
-			//set word count
-			$('#'+wordCountTarget).text(totalWords);
-		
-		}
+		};
         
+        //if remotePath and remoteTarget aren't null
+        if(remotePath != null && remoteTarget != null) {
+        
+        	//get contents of remote file
+    		$.get(remotePath, function(data) {
+				
+				//set time using the remote target found in the remote file
+				setTime($(data).filter('#'+remoteTarget).text());
+				
+			});
+	        
+        } else {
 
+	        //set time using the targeted element
+	        setTime(el.text());
+        
+        }
+        
     }
 
 })(jQuery);

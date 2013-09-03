@@ -4,6 +4,8 @@ A simple, lightweight jQuery plugin used to display an estimated time to read so
 
 <a href="http://michael-lynch.github.io/estimated-reading-time/" target="_blank">See a demo</a>
 
+<a href="http://michael-lynch.github.io/estimated-reading-time/remote.html" target="_blank">See a demo using a remote file</a>
+
 ##Instructions
 
 Include jQuery and the plugin in the head or footer of your page.
@@ -37,7 +39,15 @@ readingTimeTarget: "id"
 <br />A string that defines the ID of the element that will store the total word count (default: ''). 
 </li>
 
-<li>readingSpeed: integer
+<li>remotePath: "path"
+<br />A string that indicates the path to the remote file (default: null).
+</li>
+
+<li>remoteTarget: "id"
+<br />A string that indicates the ID of the element in the remote file that contains the text in which you want to estimate the reading time of (default: null).
+</li>
+
+<li>wordsPerMinute: integer
 <br />An integer that defines the words per minute at which to calculate the estimated reading time (default: 270).
 </li>
 
@@ -58,9 +68,26 @@ readingTimeTarget: "id"
 				$('article').readingTime({
 					readingTimeTarget: 'reading-time',
 					wordCountTarget: 'word-count',
-					readingSpeed: 275,
+					wordsPerMinute: 275,
 					round: false,
 					lang: 'fr',
 				});
 				
 			});
+			
+			
+#####Using a Remote File
+
+If you want to display the estimated reading time of copy that lives in a remote file, you would initialize the plugin on the body and use the remotePath and remoteTarget options.
+
+In this case, the plugin would display the amount of text contained in the element with the ID of "my-article" in the file called "remote.html."
+
+		$(function() {
+		
+			$('body').readingTime({
+				wordCountTarget: 'words',
+				remotePath: 'the/path/remote.html',
+				remoteTarget: 'my-article'
+			});
+			
+		});

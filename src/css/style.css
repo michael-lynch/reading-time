@@ -1,0 +1,31 @@
+body {
+	font: 18px Georgia, Times, "Times New Roman", serif;
+	line-height: 28px;
+	color: #333;
+	margin: 80px 10%;
+	max-width: 800px;
+	width: 80%;
+}
+
+h1 {
+	font: 36px "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	margin: 0;
+}
+
+small, a {
+	font: 14px "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	text-decoration: none;
+	color: #333;
+}
+
+a:hover {
+	color: crimson;
+}
+
+small {
+	text-transform: uppercase;
+}
+
+p {
+	margin: 0 0 15px 0;
+}
