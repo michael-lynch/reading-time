@@ -12,8 +12,7 @@ h1 {
 	margin: 0;
 }
 
-small, a {
-	font: 14px "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+a {
 	text-decoration: none;
 	color: #333;
 }
@@ -23,9 +22,24 @@ a:hover {
 }
 
 small {
+	font: 14px "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 	text-transform: uppercase;
 }
 
 p {
 	margin: 0 0 15px 0;
+}
+
+.btn {
+	font: 18px "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	text-transform: uppercase;
+	display: inline-block;
+	background: gainsboro;
+	margin: 10px 0;
+	padding: 15px;
+}
+
+.btn:hover {
+	background: crimson;
+	color: white;
 }
