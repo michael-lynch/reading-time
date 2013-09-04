@@ -19,6 +19,8 @@ Inside the element that contains your copy, create an element with the class of 
 	<article>
 	
 		<div class="eta"></div>
+		
+		//COPY GOES HERE
 	
 	</article>
 	
@@ -31,6 +33,8 @@ Also inside the element that contains your copy, you can create an element with 
 		<div class="eta"></div>
 		
 		<div class="word-count"></div>
+		
+		//COPY GOES HERE
 	
 	</article>
     
