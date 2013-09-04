@@ -14,13 +14,25 @@ Include jQuery and the plugin in the head or footer of your page.
     
     <script src="/js/plugins/readingTime.js"></script>
     
-Create an element on your page with the class of 'eta' where the estimated reading time will display.
+Inside the element that contains your copy, create an element with the class of 'eta' where the estimated reading time will display.
 
-	<div class="eta"></div>
+	<article>
 	
-Optionally you can create an element with whatever class or ID you want to display the total word count. The word count will only be displayed if you set the wordCountTarget parameter when initiating the plugin (see below).
+		<div class="eta"></div>
+	
+	</article>
+	
+Also inside the element that contains your copy, you can create an element with whatever class or ID you want to display the total word count.
 
-	<div class="word-count"></div>
+<em>The word count will only be displayed if you set the wordCountTarget parameter when initiating the plugin (see below).</em>
+
+	<article>
+	
+		<div class="eta"></div>
+		
+		<div class="word-count"></div>
+	
+	</article>
     
 Initialize the plugin targeting the class, ID or element that contains the text in which you want to estimate the reading time of. 
 
@@ -76,6 +88,21 @@ readingTimeTarget: "id / class / element"
 			});
 			
 			
+#####Multiple Articles
+
+Often you will have multiple articles or excerpts on a single page, in which case you would want to iterate through each.
+
+		$(function() {
+		
+			$('article').each(function() {
+			
+				$(this).readingTime();
+				
+			});
+				
+		});
+
+
 #####Using a Remote File
 
 If you want to display the estimated reading time of copy that lives in a remote file, you would initialize the plugin on the body and use the remotePath and remoteTarget options.
