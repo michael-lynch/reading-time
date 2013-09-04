@@ -116,7 +116,6 @@ In this case, the plugin would display the amount of text contained in the eleme
 		$(function() {
 		
 			$('body').readingTime({
-				wordCountTarget: '.words',
 				remotePath: 'the/path/remote.html',
 				remoteTarget: '.my-article'
 			});
