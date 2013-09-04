@@ -14,13 +14,13 @@ Include jQuery and the plugin in the head or footer of your page.
     
     <script src="/js/plugins/readingTime.js"></script>
     
-Create an element on your page with the ID of 'eta' where the estimated reading time will display.
+Create an element on your page with the class of 'eta' where the estimated reading time will display.
 
-	<div id="eta"></div>
+	<div class="eta"></div>
 	
 Optionally you can create an element with whatever class or ID you want to display the total word count. The word count will only be displayed if you set the wordCountTarget parameter when initiating the plugin (see below).
 
-	<div id="word-count"></div>
+	<div class="word-count"></div>
     
 Initialize the plugin targeting the class, ID or element that contains the text in which you want to estimate the reading time of. 
 
@@ -31,20 +31,20 @@ Initialize the plugin targeting the class, ID or element that contains the text 
 <ol>
 
 <li>
-readingTimeTarget: "id"
-<br />A string that defines the ID of the element that will store the estimated reading time (default: 'eta').
+readingTimeTarget: "id / class / element"
+<br />A string that defines the ID, class or element that will store the estimated reading time (default: 'eta').
 </li>
 
-<li>wordCountTarget: "id"
-<br />A string that defines the ID of the element that will store the total word count (default: ''). 
+<li>wordCountTarget: "id / class / element"
+<br />A string that defines the ID, class or element that will store the total word count (default: ''). 
 </li>
 
 <li>remotePath: "path"
 <br />A string that indicates the path to the remote file (default: null).
 </li>
 
-<li>remoteTarget: "id"
-<br />A string that indicates the ID of the element in the remote file that contains the text in which you want to estimate the reading time of (default: null).
+<li>remoteTarget: "id / class / element"
+<br />A string that defines the ID, class or element in the remote file that contains the text in which you want to estimate the reading time of (default: null).
 </li>
 
 <li>wordsPerMinute: integer
@@ -66,8 +66,8 @@ readingTimeTarget: "id"
 		$(function() {
 			
 				$('article').readingTime({
-					readingTimeTarget: 'reading-time',
-					wordCountTarget: 'word-count',
+					readingTimeTarget: '.reading-time',
+					wordCountTarget: '.word-count',
 					wordsPerMinute: 275,
 					round: false,
 					lang: 'fr',
@@ -80,14 +80,14 @@ readingTimeTarget: "id"
 
 If you want to display the estimated reading time of copy that lives in a remote file, you would initialize the plugin on the body and use the remotePath and remoteTarget options.
 
-In this case, the plugin would display the amount of text contained in the element with the ID of "my-article" in the file called "remote.html."
+In this case, the plugin would display the amount of text contained in the element with the class of "my-article" in the file called "remote.html."
 
 		$(function() {
 		
 			$('body').readingTime({
-				wordCountTarget: 'words',
+				wordCountTarget: '.words',
 				remotePath: 'the/path/remote.html',
-				remoteTarget: 'my-article'
+				remoteTarget: '.my-article'
 			});
 			
 		});

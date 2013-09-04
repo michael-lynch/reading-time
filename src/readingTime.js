@@ -21,8 +21,8 @@ Licensed under the MIT license
 
 		//define default parameters
         var defaults = {
-	        readingTimeTarget: 'eta',
-	        wordCountTarget: '',
+	        readingTimeTarget: '.eta',
+	        wordCountTarget: null,
 	        wordsPerMinute: 270,
 	        round: true,
 	        lang: 'en',
@@ -95,12 +95,12 @@ Licensed under the MIT license
 				if(readingTimeMinutes > 0) {
 			
 					//set reading time by the minute
-					$('#'+readingTimeTarget).text(readingTimeMinutes + ' ' + minShortForm);
+					el.find(readingTimeTarget).text(readingTimeMinutes + ' ' + minShortForm);
 				
 				} else {
 					
 					//set reading time as less than a minute
-					$('#'+readingTimeTarget).text(lessThanAMinute);
+					el.find(readingTimeTarget).text(lessThanAMinute);
 					
 				}
 			
@@ -111,7 +111,7 @@ Licensed under the MIT license
 				var readingTime = readingTimeMinutes + ':' + readingTimeSeconds;
 				
 				//set reading time in minutes and seconds
-				$('#'+readingTimeTarget).text(readingTime);
+				el.find(readingTimeTarget).text(readingTime);
 				
 			}
 	
@@ -119,29 +119,34 @@ Licensed under the MIT license
 			if(wordCountTarget !== '' && wordCountTarget !== undefined) {
 			
 				//set word count
-				$('#'+wordCountTarget).text(totalWords);
+				$(wordCountTarget).text(totalWords);
 			
 			}
 		
 		};
+		
+		//for each element
+		el.each(function() {
         
-        //if remotePath and remoteTarget aren't null
-        if(remotePath != null && remoteTarget != null) {
-        
-        	//get contents of remote file
-    		$.get(remotePath, function(data) {
-				
-				//set time using the remote target found in the remote file
-				setTime($(data).filter('#'+remoteTarget).text());
-				
-			});
+	        //if remotePath and remoteTarget aren't null
+	        if(remotePath != null && remoteTarget != null) {
 	        
-        } else {
-
-	        //set time using the targeted element
-	        setTime(el.text());
+	        	//get contents of remote file
+	    		$.get(remotePath, function(data) {
+					
+					//set time using the remote target found in the remote file
+					setTime($(data).children().text());
+					
+				});
+		        
+	        } else {
+	
+		        //set time using the targeted element
+		        setTime(el.text());
+	        
+	        }
         
-        }
+        });
         
     }
 

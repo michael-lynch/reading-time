@@ -25,13 +25,13 @@
 
 	<body lang="en">
 
-		<article id="my-article">
+		<article>
 		
 			<h1>Dethroning King Coal</h1>
 			
 			<p><em>By: Peter Singer</em></p>
 			
-			<p><small><span id="eta"></span> (<span id="words"></span> words)</small></p>
+			<p><small><span class="eta"></span> (<span class="words"></span> words)</small></p>
 	
 			<p>Earlier this year, the concentration of carbon dioxide in the atmosphere reached 400 parts per million (ppm). The last time there was that much CO2 in our atmosphere was 
 			three million years ago, when sea levels were 24 meters higher than they are today. Now sea levels are rising again. Last September, Arctic sea ice covered the smallest area 
@@ -100,7 +100,7 @@
 			$(function() {
 			
 				$('article').readingTime({
-					wordCountTarget: 'words',
+					wordCountTarget: '.words',
 				});
 				
 			});
