@@ -119,7 +119,7 @@ Licensed under the MIT license
 			if(wordCountTarget !== '' && wordCountTarget !== undefined) {
 			
 				//set word count
-				$(wordCountTarget).text(totalWords);
+				el.find(wordCountTarget).text(totalWords);
 			
 			}
 		
