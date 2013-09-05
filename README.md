@@ -2,9 +2,9 @@
 
 A simple, lightweight jQuery plugin used to display an estimated time to read some text.
 
-<a href="http://michael-lynch.github.io/estimated-reading-time/" target="_blank">See a demo</a>
+<a href="http://michael-lynch.github.io/reading-time/" target="_blank">See a demo</a>
 
-<a href="http://michael-lynch.github.io/estimated-reading-time/remote.html" target="_blank">See a demo using a remote file</a>
+<a href="http://michael-lynch.github.io/reading-time/remote.html" target="_blank">See a demo using a remote file</a>
 
 ##Instructions
 
