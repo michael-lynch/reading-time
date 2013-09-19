@@ -55,14 +55,21 @@ Licensed under the MIT license
         	
         	var minShortForm = 'min';
 	     
-	     //if lang is set to german  
+	      //if lang is set to german  
         } else if(lang == 'de') {
 	        
 	        var lessThanAMinute = "Weniger als eine Minute";
 	        
 	        var minShortForm = 'min';
-	    
-	    //default lang is english
+
+        //if lang is set to spanish
+        } else if(lang == 'es') {
+	        
+	        var lessThanAMinute = "Menos de un minuto";
+	        
+	        var minShortForm = 'min';
+
+	      //default lang is english
         } else {
 	        
 	        var lessThanAMinute = 'Less than a minute';
