@@ -68,8 +68,15 @@ Licensed under the MIT license
 	        var lessThanAMinute = "Menos de un minuto";
 	        
 	        var minShortForm = 'min';
-
-	      //default lang is english
+	        
+        //if lang is set to dutch
+        } else if(lang == 'nl') {
+	        
+	        var lessThanAMinute = "Minder dan een minuut";
+	        
+	        var minShortForm = 'min';
+	
+	//default lang is english
         } else {
 	        
 	        var lessThanAMinute = 'Less than a minute';
