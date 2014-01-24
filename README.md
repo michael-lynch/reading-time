@@ -75,6 +75,18 @@ readingTimeTarget: "id / class / element"
 <br />A two letter string that indicates the language to be used (default: "en").
 </li>
 
+<li>lessThanAMinuteString: string
+<br />Changes the "Less than a minute" in to given string (default: '').
+</li>
+
+<li>prependTimeString: string
+<br />Prepends a string before the estimated reading time (default: '').
+</li>
+
+<li>prependWordString: string
+<br />Prepends a string before the total word count (default: '').
+</li>
+
 </ol>
 
 #####Example:

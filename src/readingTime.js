@@ -4,7 +4,7 @@ Name: Reading Time
 Dependencies: jQuery
 Author: Michael Lynch
 Author URL: http://michaelynch.com
-Date Created: August 14, 2013
+Date Created: January 24, 2014
 Licensed under the MIT license
 
 */
@@ -26,6 +26,9 @@ Licensed under the MIT license
 	        wordsPerMinute: 270,
 	        round: true,
 	        lang: 'en',
+			lessThanAMinuteString: '',
+			prependTimeString: '',
+			prependWordString: '',
 	        remotePath: null,
 	        remoteTarget: null
         }
@@ -45,41 +48,43 @@ Licensed under the MIT license
         var wordsPerMinute = plugin.settings.wordsPerMinute;
         var round = plugin.settings.round;
         var lang = plugin.settings.lang;
+		var lessThanAMinuteString = plugin.settings.lessThanAMinuteString;
+		var prependTimeString = plugin.settings.prependTimeString;
+		var prependWordString = plugin.settings.prependWordString;
         var remotePath = plugin.settings.remotePath;
         var remoteTarget = plugin.settings.remoteTarget;
         
         //if lang is set to french
         if(lang == 'fr') {
-        
-        	var lessThanAMinute = "Moins d'une minute";
+			
+        	var lessThanAMinute = lessThanAMinuteString || "Moins d'une minute";
         	
         	var minShortForm = 'min';
 	     
 	      //if lang is set to german  
         } else if(lang == 'de') {
-	        
-	        var lessThanAMinute = "Weniger als eine Minute";
+	        var lessThanAMinute = lessThanAMinuteString || "Weniger als eine Minute";
 	        
 	        var minShortForm = 'min';
 
         //if lang is set to spanish
         } else if(lang == 'es') {
 	        
-	        var lessThanAMinute = "Menos de un minuto";
+	        var lessThanAMinute = lessThanAMinuteString || "Menos de un minuto";
 	        
 	        var minShortForm = 'min';
 	        
         //if lang is set to dutch
         } else if(lang == 'nl') {
 	        
-	        var lessThanAMinute = "Minder dan een minuut";
+	        var lessThanAMinute = lessThanAMinuteString || "Minder dan een minuut";
 	        
 	        var minShortForm = 'min';
 	
 	//default lang is english
         } else {
 	        
-	        var lessThanAMinute = 'Less than a minute';
+	        var lessThanAMinute = lessThanAMinuteString || 'Less than a minute';
 	        
 	        var minShortForm = 'min';
 	        
@@ -109,12 +114,12 @@ Licensed under the MIT license
 				if(readingTimeMinutes > 0) {
 			
 					//set reading time by the minute
-					el.find(readingTimeTarget).text(readingTimeMinutes + ' ' + minShortForm);
+					el.find(readingTimeTarget).text(prependTimeString + readingTimeMinutes + ' ' + minShortForm);
 				
 				} else {
 					
 					//set reading time as less than a minute
-					el.find(readingTimeTarget).text(lessThanAMinute);
+					el.find(readingTimeTarget).text(prependTimeString + lessThanAMinute);
 					
 				}
 			
@@ -125,7 +130,7 @@ Licensed under the MIT license
 				var readingTime = readingTimeMinutes + ':' + readingTimeSeconds;
 				
 				//set reading time in minutes and seconds
-				el.find(readingTimeTarget).text(readingTime);
+				el.find(readingTimeTarget).text(prependTimeString + readingTime);
 				
 			}
 	
@@ -133,7 +138,7 @@ Licensed under the MIT license
 			if(wordCountTarget !== '' && wordCountTarget !== undefined) {
 			
 				//set word count
-				el.find(wordCountTarget).text(totalWords);
+				el.find(wordCountTarget).text(prependWordString + totalWords);
 			
 			}
 		
