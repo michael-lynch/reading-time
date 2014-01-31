@@ -93,15 +93,15 @@ readingTimeTarget: "id / class / element"
 
 		$(function() {
 			
-				$('article').readingTime({
-					readingTimeTarget: '.reading-time',
-					wordCountTarget: '.word-count',
-					wordsPerMinute: 275,
-					round: false,
-					lang: 'fr',
-				});
-				
+			$('article').readingTime({
+				readingTimeTarget: '.reading-time',
+				wordCountTarget: '.word-count',
+				wordsPerMinute: 275,
+				round: false,
+				lang: 'fr',
 			});
+				
+		});
 			
 			
 #####Multiple Articles
