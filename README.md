@@ -76,15 +76,15 @@ readingTimeTarget: "id / class / element"
 </li>
 
 <li>lessThanAMinuteString: string
-<br />Changes the "Less than a minute" in to given string (default: '').
+<br />A string that changes the default "Less than a minute" copy (default: '').
 </li>
 
 <li>prependTimeString: string
-<br />Prepends a string before the estimated reading time (default: '').
+<br />A string that is prepended before the estimated reading time (default: '').
 </li>
 
 <li>prependWordString: string
-<br />Prepends a string before the total word count (default: '').
+<br />A string that is prepended before the total word count (default: '').
 </li>
 
 </ol>
