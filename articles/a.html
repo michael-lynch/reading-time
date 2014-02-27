@@ -1,0 +1,74 @@
+<!doctype html>
+
+<html>
+
+	<head>
+	
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		
+		<meta charset="utf-8">
+	
+		<title>Reading Time jQuery Plugin</title>
+		
+		<meta name="description" content="A simple, lightweight jQuery plugin used to display an estimated time to read some text.">
+		
+		<meta name="author" content="http://michaelynch.com">
+	
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		
+		<!-- for pesentation only -->
+		<link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
+		
+		</style>
+		
+	</head>
+
+	<body lang="en">
+
+		<article class="article">
+		
+			<h1>Magna Lorem Quam Nullam</h1>
+			
+			<p><em>By: Mike Lynch</em></p>
+			
+			<p><small><span class="eta"></span> (<span class="words"></span> words)</small></p>
+	
+			<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+			<p>Donec id elit non mi porta gravida at eget metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. 
+			Curabitur blandit tempus porttitor. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod.</p>
+
+			<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Donec 
+			ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum.</p>
+
+			<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Nullam quis risus eget urna 
+			mollis ornare vel eu leo. Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante 
+			venenatis dapibus posuere velit aliquet.</p>
+			
+		</article>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	
+		<script type="text/javascript">
+		if (typeof jQuery == 'undefined') {
+		    document.write(unescape("%3Cscript src='../src/lib/jquery.1.9.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+		}
+		</script>
+		
+		<script src="../js/readingTime.min.js"></script>
+		
+		<script>
+		
+			$(function() {
+				
+				$('article').readingTime({
+					wordCountTarget: '.words'
+				});
+				
+			});
+		
+		</script>
+
+	</body>
+	
+</html>

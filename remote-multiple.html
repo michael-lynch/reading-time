@@ -1,0 +1,101 @@
+<!doctype html>
+
+<html>
+
+	<head>
+	
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		
+		<meta charset="utf-8">
+	
+		<title>Reading Time jQuery Plugin</title>
+		
+		<meta name="description" content="A simple, lightweight jQuery plugin used to display an estimated time to read some text.">
+		
+		<meta name="author" content="http://michaelynch.com">
+	
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		
+		<!-- for pesentation only -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+		
+	</head>
+
+	<body lang="en">
+
+		<article data-file="articles/a.html" data-target="article">
+		
+			<a href="articles/a.html"><h1>Magna Lorem Quam Nullam</h1></a>
+			
+			<p><em>By: Mike Lynch</em></p>
+			
+			<p><small><span class="eta"></span> (<span class="words"></span> words)</small></p>
+	
+			<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+			
+			<a href="articles/a.html" class="btn">Read more</a>
+			
+		</article>
+
+		<article data-file="articles/b.html" data-target="article">
+		
+			<a href="articles/b.html"><h1>Justo Cursus Inceptos Ipsum</h1></a>
+			
+			<p><em>By: Mike Lynch</em></p>
+			
+			<p><small><span class="eta"></span> (<span class="words"></span> words)</small></p>
+	
+			<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean 
+			lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+			
+			<a href="articles/b.html" class="btn">Read more</a>
+			
+		</article>
+		
+		<article data-file="articles/c.html" data-target="article">
+		
+			<a href="articles/c.html"><h1>Sem Vehicula Dapibus Malesuada</h1></a>
+			
+			<p><em>By: Mike Lynch</em></p>
+			
+			<p><small><span class="eta"></span> (<span class="words"></span> words)</small></p>
+	
+			<p>Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue. Maecenas faucibus mollis interdum. Nullam id dolor id nibh 
+			ultricies vehicula ut id elit. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+			
+			<a href="articles/c.html" class="btn">Read more</a>
+			
+		</article>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	
+		<script type="text/javascript">
+		if (typeof jQuery == 'undefined') {
+		    document.write(unescape("%3Cscript src='../src/lib/jquery.1.9.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+		}
+		</script>
+		
+		<script src="js/readingTime.min.js"></script>
+		
+		<script>
+		
+			$(function() {
+			
+				$('article').each(function() {
+				
+					$(this).readingTime({
+						readingTimeTarget: $(this).find('.eta'),
+						wordCountTarget: $(this).find('.words'),
+						remotePath: $(this).attr('data-file'),
+						remoteTarget: $(this).attr('data-target')
+					});
+					
+				});
+				
+			});
+		
+		</script>
+
+	</body>
+	
+</html>

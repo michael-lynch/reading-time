@@ -1,0 +1,100 @@
+<!doctype html>
+
+<html>
+
+	<head>
+	
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		
+		<meta charset="utf-8">
+	
+		<title>Reading Time jQuery Plugin</title>
+		
+		<meta name="description" content="A simple, lightweight jQuery plugin used to display an estimated time to read some text.">
+		
+		<meta name="author" content="http://michaelynch.com">
+	
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		
+		<!-- for pesentation only -->
+		<link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
+		
+		</style>
+		
+	</head>
+
+	<body lang="en">
+
+		<article class="article">
+		
+			<h1>Justo Cursus Inceptos Ipsum</h1>
+			
+			<p><em>By: Mike Lynch</em></p>
+			
+			<p><small><span class="eta"></span> (<span class="words"></span> words)</small></p>
+	
+			<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean 
+			lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+
+			<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis 
+			dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+
+			<p>Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Nullam id dolor id nibh ultricies vehicula ut id elit. 
+			Aenean lacinia bibendum nulla sed consectetur. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor. Cum sociis natoque 
+			penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+
+			<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Vestibulum id 
+			ligula porta felis euismod semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+			
+			<p>Leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean 
+			lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+
+			<p>Risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis 
+			dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+			
+			<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean 
+			lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+
+			<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis 
+			dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+
+			<p>Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Nullam id dolor id nibh ultricies vehicula ut id elit. 
+			Aenean lacinia bibendum nulla sed consectetur. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor. Cum sociis natoque 
+			penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+
+			<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Vestibulum id 
+			ligula porta felis euismod semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+			
+			<p>Leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean 
+			lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+
+			<p>Risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis 
+			dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+			
+		</article>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	
+		<script type="text/javascript">
+		if (typeof jQuery == 'undefined') {
+		    document.write(unescape("%3Cscript src='../src/lib/jquery.1.9.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+		}
+		</script>
+		
+		<script src="../js/readingTime.min.js"></script>
+		
+		<script>
+		
+			$(function() {
+				
+				$('article').readingTime({
+					wordCountTarget: '.words'
+				});
+				
+			});
+		
+		</script>
+
+	</body>
+	
+</html>
