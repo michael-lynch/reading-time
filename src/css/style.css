@@ -7,6 +7,10 @@ body {
 	width: 80%;
 }
 
+article {
+	margin: 0 0 40px 0;
+}
+
 h1 {
 	font: 36px "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 	margin: 0;

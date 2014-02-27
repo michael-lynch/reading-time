@@ -62,8 +62,9 @@ Licensed under the MIT license
         	
         	var minShortForm = 'min';
 	     
-	      //if lang is set to german  
+	    //if lang is set to german  
         } else if(lang == 'de') {
+        
 	        var lessThanAMinute = lessThanAMinuteString || "Weniger als eine Minute";
 	        
 	        var minShortForm = 'min';
@@ -82,7 +83,7 @@ Licensed under the MIT license
 	        
 	        var minShortForm = 'min';
 	
-	//default lang is english
+	    //default lang is english
         } else {
 	        
 	        var lessThanAMinute = lessThanAMinuteString || 'Less than a minute';
@@ -150,12 +151,12 @@ Licensed under the MIT license
         
 	        //if remotePath and remoteTarget aren't null
 	        if(remotePath != null && remoteTarget != null) {
-	        
+
 	        	//get contents of remote file
 	    		$.get(remotePath, function(data) {
 					
 					//set time using the remote target found in the remote file
-					setTime($(data).children().text());
+					setTime($(data).filter(remoteTarget).text());
 					
 				});
 		        
