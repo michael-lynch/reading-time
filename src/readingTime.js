@@ -156,7 +156,7 @@ Licensed under the MIT license
 	    		$.get(remotePath, function(data) {
 					
 					//set time using the remote target found in the remote file
-					setTime($(data).filter(remoteTarget).text());
+					setTime($('<div>').html(data).find(remoteTarget).text());
 					
 				});
 		        
