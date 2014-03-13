@@ -1,0 +1,24 @@
+{
+  "name": "reading-time",
+  "version": "1.0.0",
+  "homepage": "https://github.com/michael-lynch/reading-time",
+  "authors": [
+    "Michael Lynch <michael@teehanlax.com>"
+  ],
+  "description": "A simple, lightweight jQuery plugin used to display an estimated time to read some text.",
+  "main": "build/readingTime.min.js",
+  "keywords": [
+    "reading",
+    "time",
+    "estimated",
+    "eta"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
