@@ -55,6 +55,14 @@ Licensed under the MIT license
         var remotePath = plugin.settings.remotePath;
         var remoteTarget = plugin.settings.remoteTarget;
         
+        
+        //if lang is set to italian
+        if(lang == 'it') {
+			
+        	var lessThanAMinute = lessThanAMinuteString || "Meno di un minuto";
+        	
+        	var minShortForm = 'min';
+	     
         //if lang is set to french
         if(lang == 'fr') {
 			
