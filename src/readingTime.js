@@ -64,7 +64,7 @@ Licensed under the MIT license
         	var minShortForm = 'min';
 	     
         //if lang is set to french
-        if(lang == 'fr') {
+        } else if(lang == 'fr') {
 			
         	var lessThanAMinute = lessThanAMinuteString || "Moins d'une minute";
         	
