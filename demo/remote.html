@@ -53,8 +53,8 @@
 		
 			$(function() {
 				
-				$('body').readingTime({
-					wordCountTarget: '.words',
+				$('article').readingTime({
+					wordCountTarget: $(this).find('.words'),
 					remotePath: 'index.html',
 					remoteTarget: 'article'
 				});

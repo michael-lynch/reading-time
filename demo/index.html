@@ -100,7 +100,8 @@
 			$(function() {
 			
 				$('article').readingTime({
-					wordCountTarget: '.words',
+					readingTimeTarget: $(this).find('.eta'),
+					wordCountTarget: $(this).find('.words')
 				});
 				
 			});

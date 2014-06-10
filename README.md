@@ -16,17 +16,15 @@ Include jQuery and the plugin in the head or footer of your page.
     
     <script src="/js/plugins/readingTime.js"></script>
     
-Inside the element that contains your copy, create an element with the class of 'eta' where the estimated reading time will display.
+Create an element with the class of 'eta' where the estimated reading time will display.
 
 	<article>
 	
 		<div class="eta"></div>
-		
-		//COPY GOES HERE
 	
 	</article>
 	
-Also inside the element that contains your copy, you can create an element with whatever class or ID you want to display the total word count.
+Optionally you can also create an element with whatever class or ID you want to display the total word count.
 
 <em>The word count will only be displayed if you set the wordCountTarget parameter when initiating the plugin (see below).</em>
 
@@ -35,8 +33,6 @@ Also inside the element that contains your copy, you can create an element with 
 		<div class="eta"></div>
 		
 		<div class="word-count"></div>
-		
-		//COPY GOES HERE
 	
 	</article>
     
@@ -96,8 +92,8 @@ readingTimeTarget: "id / class / element"
 		$(function() {
 			
 			$('article').readingTime({
-				readingTimeTarget: '.reading-time',
-				wordCountTarget: '.word-count',
+				readingTimeTarget: $(this).find('.reading-time'),
+				wordCountTarget: $(this).find('.word-count'),
 				wordsPerMinute: 275,
 				round: false,
 				lang: 'fr',
@@ -114,7 +110,9 @@ Often you will have multiple articles or excerpts on a single page, in which cas
 		
 			$('article').each(function() {
 			
-				$(this).readingTime();
+				$(this).readingTime({
+					readingTimeTarget: $(this).find('.reading-time')
+				});
 				
 			});
 				
@@ -122,13 +120,13 @@ Often you will have multiple articles or excerpts on a single page, in which cas
 
 #####Using a Remote File
 
-If you want to display the estimated reading time of copy that lives in a remote file, you would initialize the plugin on the body and use the remotePath and remoteTarget options.
+If you want to display the estimated reading time of copy that lives in a remote file, you would initialize the plugin and use the remotePath and remoteTarget options.
 
 In this case, the plugin would display the amount of text contained in the element with the class of "my-article" in the file called "remote.html."
 
 		$(function() {
 		
-			$('body').readingTime({
+			$('article').readingTime({
 				remotePath: 'the/path/remote.html',
 				remoteTarget: '.my-article'
 			});
