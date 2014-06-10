@@ -103,7 +103,7 @@ Licensed under the MIT license
         var setTime = function(text) {
 
 	        //split text by spaces to define total words
-			var totalWords = text.split(' ').length;
+			var totalWords = text.trim().split(/\s+/g).length;
 			
 			//define words per second based on words per minute (wordsPerMinute)
 			var wordsPerSecond = wordsPerMinute / 60;
