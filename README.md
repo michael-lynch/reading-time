@@ -90,17 +90,17 @@ readingTimeTarget: "id / class / element"
 #####Example:
 
 		$(function() {
+			var $article = $('article');
 			
-			$('article').readingTime({
-				readingTimeTarget: $(this).find('.reading-time'),
-				wordCountTarget: $(this).find('.word-count'),
+			$article.readingTime({
+				readingTimeTarget: $article.find('.reading-time'),
+				wordCountTarget: $article.find('.word-count'),
 				wordsPerMinute: 275,
 				round: false,
-				lang: 'fr',
+				lang: 'fr'
 			});
-				
 		});
-			
+
 			
 #####Multiple Articles
 
