@@ -1,6 +1,6 @@
 #Reading Time
 
-A simple, lightweight jQuery plugin used to display an estimated time to read some text.
+Inspired by [Medium](http://medium.com), Reading Time is a simple, lightweight jQuery plugin used to display an estimated time to read some text.
 
 <a href="http://michael-lynch.github.io/reading-time/" target="_blank">See a demo</a>
 
