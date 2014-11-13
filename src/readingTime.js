@@ -172,7 +172,13 @@ Licensed under the MIT license
 
 	        	//get contents of remote file
 	    		$.get(remotePath, function(data) {
-					
+	    				// avoid script execution if remote is a full html page
+	    				// TODO : need improvement if script in body part of the page
+					if (data.indexOf('</head>')!==-1){
+						data = data.split('</head>');
+						data = data[1];
+					}
+
 					//set time using the remote target found in the remote file
 					setTime($('<div>').html(data).find(remoteTarget).text());
 					
