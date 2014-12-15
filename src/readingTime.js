@@ -91,6 +91,20 @@ Licensed under the MIT license
 	        
 	        var minShortForm = 'min';
 	
+	//if lang is set to slovak
+        } else if(lang == 'sk') {
+	        
+	        var lessThanAMinute = lessThanAMinuteString || "Menej než minútu";
+	        
+	        var minShortForm = 'min';
+	
+	//if lang is set to czech
+        } else if(lang == 'cz') {
+	        
+	        var lessThanAMinute = lessThanAMinuteString || "Méně než minutu";
+	        
+	        var minShortForm = 'min';
+	
 	    //default lang is english
         } else {
 	        
