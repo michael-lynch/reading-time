@@ -104,7 +104,14 @@ Licensed under the MIT license
 	        var lessThanAMinute = lessThanAMinuteString || "Méně než minutu";
 	        
 	        var minShortForm = 'min';
-	
+
+	//if lang is set to Hungarian
+        } else if(lang == 'hu') {
+	        
+	        var lessThanAMinute = lessThanAMinuteString || "Kevesebb mint egy perc";
+	        
+	        var minShortForm = 'perc';
+
 	    //default lang is english
         } else {
 	        
