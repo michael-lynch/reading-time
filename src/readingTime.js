@@ -12,9 +12,9 @@ Licensed under the MIT license
 
 ;(function($) {
 
-    $.fn.readingTime = function(options) {
-    
-    	//return if no element was bound
+	$.fn.readingTime = function(options) {
+
+		//return if no element was bound
 		//so chained events can continue
 		if(!this.length) { 
 			return this; 
