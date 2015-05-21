@@ -85,6 +85,10 @@ readingTimeTarget: "id / class / element"
 <br />A string that is prepended before the estimated reading time (default: '').
 </li>
 
+<li>appendTimeString: string
+<br />A string that is appended to the end the estimated reading time (default: '').
+</li>
+
 <li>prependWordString: string
 <br />A string that is prepended before the total word count (default: '').
 </li>
