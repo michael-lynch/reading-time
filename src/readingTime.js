@@ -5,7 +5,7 @@ Dependencies: jQuery
 Author: Michael Lynch
 Author URL: http://michaelynch.com
 Date Created: August 14, 2013
-Date Updated: June 10, 2014
+Date Updated: June 19, 2015
 Licensed under the MIT license
 
 */
@@ -13,12 +13,6 @@ Licensed under the MIT license
 ;(function($) {
 
     $.fn.readingTime = function(options) {
-    
-    	//return if no element was bound
-		//so chained events can continue
-		if(!this.length) { 
-			return this; 
-		}
 
 		//define default parameters
         var defaults = {
@@ -31,171 +25,180 @@ Licensed under the MIT license
 			prependTimeString: '',
 			prependWordString: '',
 	        remotePath: null,
-	        remoteTarget: null
-        }
-        
-        //define plugin
-        var plugin = this;
-
-        //define element
-        var el = $(this);
+	        remoteTarget: null,
+	        success: function() {},
+	        error: function() {}
+        },
+        plugin = this,
+        el = $(this);
 
         //merge defaults and options
         plugin.settings = $.extend({}, defaults, options);
         
         //define vars
-        var readingTimeTarget = plugin.settings.readingTimeTarget;
-        var wordCountTarget = plugin.settings.wordCountTarget;
-        var wordsPerMinute = plugin.settings.wordsPerMinute;
-        var round = plugin.settings.round;
-        var lang = plugin.settings.lang;
-		var lessThanAMinuteString = plugin.settings.lessThanAMinuteString;
-		var prependTimeString = plugin.settings.prependTimeString;
-		var prependWordString = plugin.settings.prependWordString;
-        var remotePath = plugin.settings.remotePath;
-        var remoteTarget = plugin.settings.remoteTarget;
+        var s = plugin.settings;
         
-        
-        //if lang is set to italian
-        if(lang == 'it') {
+        //if no element was bound
+		if(!this.length) {
+		
+			//run error callback
+			s.error.call(this); 
 			
-        	var lessThanAMinute = lessThanAMinuteString || "Meno di un minuto";
+			//return so chained events can continue
+			return this; 
+		}
+        
+        //if s.lang is set to italian
+        if(s.lang == 'it') {
+			
+        	var lessThanAMinute = s.lessThanAMinuteString || "Meno di un minuto";
         	
         	var minShortForm = 'min';
 	     
-        //if lang is set to french
-        } else if(lang == 'fr') {
+        //if s.lang is set to french
+        } else if(s.lang == 'fr') {
 			
-        	var lessThanAMinute = lessThanAMinuteString || "Moins d'une minute";
+        	var lessThanAMinute = s.lessThanAMinuteString || "Moins d'une minute";
         	
         	var minShortForm = 'min';
 	     
-	    //if lang is set to german  
-        } else if(lang == 'de') {
+	    //if s.lang is set to german  
+        } else if(s.lang == 'de') {
         
-	        var lessThanAMinute = lessThanAMinuteString || "Weniger als eine Minute";
+	        var lessThanAMinute = s.lessThanAMinuteString || "Weniger als eine Minute";
 	        
 	        var minShortForm = 'min';
 
-        //if lang is set to spanish
-        } else if(lang == 'es') {
+        //if s.lang is set to spanish
+        } else if(s.lang == 'es') {
 	        
-	        var lessThanAMinute = lessThanAMinuteString || "Menos de un minuto";
-	        
-	        var minShortForm = 'min';
-	        
-        //if lang is set to dutch
-        } else if(lang == 'nl') {
-	        
-	        var lessThanAMinute = lessThanAMinuteString || "Minder dan een minuut";
+	        var lessThanAMinute = s.lessThanAMinuteString || "Menos de un minuto";
 	        
 	        var minShortForm = 'min';
-	
-	//if lang is set to slovak
-        } else if(lang == 'sk') {
 	        
-	        var lessThanAMinute = lessThanAMinuteString || "Menej než minútu";
+        //if s.lang is set to dutch
+        } else if(s.lang == 'nl') {
+	        
+	        var lessThanAMinute = s.lessThanAMinuteString || "Minder dan een minuut";
 	        
 	        var minShortForm = 'min';
 	
-	//if lang is set to czech
-        } else if(lang == 'cz') {
+		//if s.lang is set to slovak
+        } else if(s.lang == 'sk') {
 	        
-	        var lessThanAMinute = lessThanAMinuteString || "Méně než minutu";
+	        var lessThanAMinute = s.lessThanAMinuteString || "Menej než minútu";
+	        
+	        var minShortForm = 'min';
+	
+		//if s.lang is set to czech
+        } else if(s.lang == 'cz') {
+	        
+	        var lessThanAMinute = s.lessThanAMinuteString || "Méně než minutu";
 	        
 	        var minShortForm = 'min';
 
-	//if lang is set to Hungarian
-        } else if(lang == 'hu') {
+		//if s.lang is set to Hungarian
+        } else if(s.lang == 'hu') {
 	        
-	        var lessThanAMinute = lessThanAMinuteString || "Kevesebb mint egy perc";
+	        var lessThanAMinute = s.lessThanAMinuteString || "Kevesebb mint egy perc";
 	        
 	        var minShortForm = 'perc';
 
-	    //default lang is english
+	    //default s.lang is english
         } else {
 	        
-	        var lessThanAMinute = lessThanAMinuteString || 'Less than a minute';
+	        var lessThanAMinute = s.lessThanAMinuteString || 'Less than a minute';
 	        
 	        var minShortForm = 'min';
 	        
         }
         
         var setTime = function(text) {
+        
+        	if(text !== '') {
 
-	        //split text by spaces to define total words
-			var totalWords = text.trim().split(/\s+/g).length;
-			
-			//define words per second based on words per minute (wordsPerMinute)
-			var wordsPerSecond = wordsPerMinute / 60;
-			
-			//define total reading time in seconds
-			var totalReadingTimeSeconds = totalWords / wordsPerSecond;
-			
-			//define reading time in minutes
-			//if round is set to true
-			if(round === true) {
-
-				var readingTimeMinutes = Math.round(totalReadingTimeSeconds / 60);
-
-			//if round is set to false
-			} else {
-
-				var readingTimeMinutes = Math.floor(totalReadingTimeSeconds / 60);
-
-			}
-
-			//define remaining reading time seconds
-			var readingTimeSeconds = Math.round(totalReadingTimeSeconds - readingTimeMinutes * 60);
-			
-			//if round is set to true
-			if(round === true) {
+		        //split text by spaces to define total words
+				var totalWords = text.trim().split(/\s+/g).length;
 				
-				//if minutes are greater than 0
-				if(readingTimeMinutes > 0) {
-			
-					//set reading time by the minute
-					$(readingTimeTarget).text(prependTimeString + readingTimeMinutes + ' ' + minShortForm);
+				//define words per second based on words per minute (s.wordsPerMinute)
+				var wordsPerSecond = s.wordsPerMinute / 60;
 				
+				//define total reading time in seconds
+				var totalReadingTimeSeconds = totalWords / wordsPerSecond;
+				
+				//define reading time in minutes
+				//if s.round is set to true
+				if(s.round === true) {
+	
+					var readingTimeMinutes = Math.round(totalReadingTimeSeconds / 60);
+	
+				//if s.round is set to false
 				} else {
+	
+					var readingTimeMinutes = Math.floor(totalReadingTimeSeconds / 60);
+	
+				}
+	
+				//define remaining reading time seconds
+				var readingTimeSeconds = Math.round(totalReadingTimeSeconds - readingTimeMinutes * 60);
+				
+				//if s.round is set to true
+				if(s.round === true) {
 					
-					//set reading time as less than a minute
-					$(readingTimeTarget).text(prependTimeString + lessThanAMinute);
+					//if minutes are greater than 0
+					if(readingTimeMinutes > 0) {
+				
+						//set reading time by the minute
+						$(s.readingTimeTarget).text(s.prependTimeString + readingTimeMinutes + ' ' + minShortForm);
+					
+					} else {
+						
+						//set reading time as less than a minute
+						$(s.readingTimeTarget).text(s.prependTimeString + lessThanAMinute);
+						
+					}
+				
+				//if s.round is set to false	
+				} else {
+				
+					//format reading time
+					var readingTime = readingTimeMinutes + ':' + readingTimeSeconds;
+					
+					//set reading time in minutes and seconds
+					$(s.readingTimeTarget).text(s.prependTimeString + readingTime);
 					
 				}
-			
-			//if round is set to false	
+		
+				//if word count container isn't blank or undefined
+				if(s.wordCountTarget !== '' && s.wordCountTarget !== undefined) {
+				
+					//set word count
+					$(s.wordCountTarget).text(s.prependWordString + totalWords);
+				
+				}
+				
+				//run success callback
+				s.success.call(this);
+				
 			} else {
-			
-				//format reading time
-				var readingTime = readingTimeMinutes + ':' + readingTimeSeconds;
 				
-				//set reading time in minutes and seconds
-				$(readingTimeTarget).text(prependTimeString + readingTime);
-				
-			}
-	
-			//if word count container isn't blank or undefined
-			if(wordCountTarget !== '' && wordCountTarget !== undefined) {
-			
-				//set word count
-				$(wordCountTarget).text(prependWordString + totalWords);
-			
+				//run error callback
+				s.error.call(this, 'The element is empty.');
 			}
 		
 		};
-		
+
 		//for each element
 		el.each(function() {
         
-	        //if remotePath and remoteTarget aren't null
-	        if(remotePath != null && remoteTarget != null) {
+	        //if s.remotePath and s.remoteTarget aren't null
+	        if(s.remotePath != null && s.remoteTarget != null) {
 
 	        	//get contents of remote file
-	    		$.get(remotePath, function(data) {
+	    		$.get(s.remotePath, function(data) {
 					
 					//set time using the remote target found in the remote file
-					setTime($('<div>').html(data).find(remoteTarget).text());
+					setTime($('<div>').html(data).find(s.remoteTarget).text());
 					
 				});
 		        
@@ -203,11 +206,8 @@ Licensed under the MIT license
 	
 		        //set time using the targeted element
 		        setTime(el.text());
-	        
 	        }
-        
         });
-        
     }
 
 })(jQuery);

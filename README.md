@@ -89,6 +89,14 @@ readingTimeTarget: "id / class / element"
 <br />A string that is prepended before the total word count (default: '').
 </li>
 
+<li>success: function() {}
+<br />A callback function that runs if the plugin was successful (default: `function()`).
+</li>
+
+<li>error: function(message) {}
+<br />A callback function that runs if the plugin fails (default: `function(message)`).
+</li>
+
 </ol>
 
 #####Example:
@@ -102,7 +110,14 @@ $(function() {
 		wordCountTarget: $article.find('.word-count'),
 		wordsPerMinute: 275,
 		round: false,
-		lang: 'fr'
+		lang: 'fr',
+		success: function() {
+			console.log('It worked!');
+		},
+		error: function(message) {
+			console.log(message);
+			$article.find('.reading-time').remove();
+		}
 	});
 });
 ```
