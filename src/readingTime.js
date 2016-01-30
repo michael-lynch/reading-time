@@ -5,7 +5,7 @@ Dependencies: jQuery
 Author: Michael Lynch
 Author URL: http://michaelynch.com
 Date Created: August 14, 2013
-Date Updated: June 19, 2015
+Date Updated: January 30, 2016
 Licensed under the MIT license
 
 */
@@ -103,6 +103,13 @@ Licensed under the MIT license
 	        var lessThanAMinute = s.lessThanAMinuteString || "Kevesebb mint egy perc";
 	        
 	        var minShortForm = 'perc';
+          
+    // if s.lang is set to Russian
+        } else if (s.lang == 'ru') {
+          
+          var lessThanAMinute = s.lessThanAMinuteString || "Меньше минуты";
+          
+          var minShortForm = 'мин';
 
 	    //default s.lang is english
         } else {
