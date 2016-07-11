@@ -111,6 +111,13 @@ Licensed under the MIT license
           
           var minShortForm = 'мин';
 
+	    //if s.lang is set to Arabic
+        } else if (s.lang == 'ar') {
+          
+          var lessThanAMinute = s.lessThanAMinuteString || "أقل من دقيقة";
+          
+          var minShortForm = 'دقيقة';
+
 	    //default s.lang is english
         } else {
 	        
