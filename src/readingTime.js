@@ -1,5 +1,4 @@
 /*!
-
 Name: Reading Time
 Dependencies: jQuery
 Author: Michael Lynch
@@ -7,10 +6,11 @@ Author URL: http://michaelynch.com
 Date Created: August 14, 2013
 Date Updated: July 11, 2016
 Licensed under the MIT license
-
 */
 
 ;(function($) {
+
+	var totalReadingTimeSeconds;
 
     $.fn.readingTime = function(options) {
 
@@ -168,7 +168,7 @@ Licensed under the MIT license
 				var wordsPerSecond = s.wordsPerMinute / 60;
 
 				//define total reading time in seconds
-				var totalReadingTimeSeconds = totalWords / wordsPerSecond;
+				totalReadingTimeSeconds = totalWords / wordsPerSecond;
 
 				//define reading time in minutes
 				//if s.round is set to true
@@ -252,6 +252,9 @@ Licensed under the MIT license
 		        setTime(el.text());
 	        }
         });
+
+        return totalReadingTimeSeconds;
     }
+
 
 })(jQuery);
