@@ -1,4 +1,5 @@
 #Reading Time
+[![CDNJS](https://img.shields.io/cdnjs/v/reading-time.svg)](https://cdnjs.com/libraries/reading-time)
 
 Inspired by [Medium](http://medium.com), Reading Time is a simple, lightweight jQuery plugin used to display an estimated time to read some text.
 
