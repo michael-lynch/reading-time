@@ -148,7 +148,12 @@ Licensed under the MIT license
             var lessThanAMinute = s.lessThanAMinuteString || "Mindre än en minut";
             var minShortForm = 'min';
 
-	    //default s.lang is english
+        //if s.lang is set to Turkish
+        } else if(s.lang == 'tr') {
+            var lessThanAMinute = s.lessThanAMinuteString || "Bir dakikadan az";
+            var minShortForm = 'dk';
+
+        //default s.lang is english
         } else {
 
 	        var lessThanAMinute = s.lessThanAMinuteString || 'Less than a minute';
