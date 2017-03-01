@@ -17,6 +17,7 @@ Licensed under the MIT license
 		//define default parameters
         var defaults = {
 	        readingTimeTarget: '.eta',
+            readingTimeAsNumber: false,
 	        wordCountTarget: null,
 	        wordsPerMinute: 270,
 	        round: true,
@@ -198,7 +199,7 @@ Licensed under the MIT license
 					if(readingTimeMinutes > 0) {
 
 						//set reading time by the minute
-						$(s.readingTimeTarget).text(s.prependTimeString + readingTimeMinutes + ' ' + minShortForm);
+						$(s.readingTimeTarget).text(s.prependTimeString + readingTimeMinutes + ((!s.readingTimeAsNumber) ? ' ' + minShortForm : ''));
 
 					} else {
 
