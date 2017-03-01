@@ -204,7 +204,7 @@ Licensed under the MIT license
 					} else {
 
 						//set reading time as less than a minute
-						$(s.readingTimeTarget).text(s.prependTimeString + lessThanAMinute);
+						$(s.readingTimeTarget).text((!s.readingTimeAsNumber) ? s.prependTimeString + lessThanAMinute : readingTimeMinutes);
 
 					}
 

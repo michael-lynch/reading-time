@@ -49,6 +49,11 @@ $('article').readingTime();
 <ol>
 
 <li>
+readingTimeAsNumber: boolean
+<br />If you want to take reading time as integer, you can use this (default: 'false').
+</li>
+
+<li>
 readingTimeTarget: "id / class / element"
 <br />A string that defines the ID, class or element that will store the estimated reading time (default: 'eta').
 </li>
@@ -106,6 +111,7 @@ $(function() {
 	var $article = $('article');
 	
 	$article.readingTime({
+	    readingTimeAsNumber: true,
 		readingTimeTarget: $article.find('.reading-time'),
 		wordCountTarget: $article.find('.word-count'),
 		wordsPerMinute: 275,
