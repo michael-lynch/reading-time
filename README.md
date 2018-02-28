@@ -16,7 +16,7 @@ Include jQuery and the plugin in the head or footer of your page.
 ```html
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<script src="/js/plugins/readingTime.js"></script>
+<script src="/js/plugins/readingtime.js"></script>
 ```
 
 Create an element with the class of 'eta' where the estimated reading time will display.
