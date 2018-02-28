@@ -4,263 +4,246 @@ Dependencies: jQuery
 Author: Michael Lynch
 Author URL: http://michaelynch.com
 Date Created: August 14, 2013
-Date Updated: July 11, 2016
+Date Updated: February 28, 2018
 Licensed under the MIT license
 */
 
 ;(function($) {
 
-	var totalReadingTimeSeconds;
+	$.fn.readingTime = function(options) {
 
-    $.fn.readingTime = function(options) {
-
-		//define default parameters
-        var defaults = {
-	        readingTimeTarget: '.eta',
-            readingTimeAsNumber: false,
-	        wordCountTarget: null,
-	        wordsPerMinute: 270,
-	        round: true,
-	        lang: 'en',
+		// define default parameters
+		const defaults = {
+			readingTimeTarget: '.eta',
+			readingTimeAsNumber: false,
+			wordCountTarget: null,
+			wordsPerMinute: 270,
+			round: true,
+			lang: 'en',
 			lessThanAMinuteString: '',
 			prependTimeString: '',
 			prependWordString: '',
-	        remotePath: null,
-	        remoteTarget: null,
-	        success: function() {},
-	        error: function() {}
-        },
-        plugin = this,
-        el = $(this);
+			remotePath: null,
+			remoteTarget: null,
+			success: function() {},
+			error: function() {}
+		};
 
-        //merge defaults and options
-        plugin.settings = $.extend({}, defaults, options);
+		const plugin = this;
+		const el = $(this);
 
-        //define vars
-        var s = plugin.settings;
+		let wordsPerSecond;
+		let lessThanAMinute;
+		let minShortForm;
 
-        //if no element was bound
-		if(!this.length) {
+		let totalWords;
+		let totalReadingTimeSeconds;
 
-			//run error callback
-			s.error.call(this);
+		let readingTimeMinutes;
+		let readingTimeSeconds;
+		let readingTime;
+		let readingTimeObj;
 
-			//return so chained events can continue
-			return this;
-		}
+		// merge defaults and options
+		plugin.settings = $.extend({}, defaults, options);
 
-        //if s.lang is set to italian
-        if(s.lang == 'it') {
+		// define vars
+		const s = plugin.settings;
 
-        	var lessThanAMinute = s.lessThanAMinuteString || "Meno di un minuto";
+		const setTime = function(o) {
 
-        	var minShortForm = 'min';
+			if(o.text !== '') {
 
-        //if s.lang is set to french
-        } else if(s.lang == 'fr') {
-
-        	var lessThanAMinute = s.lessThanAMinuteString || "Moins d'une minute";
-
-        	var minShortForm = 'min';
-
-	    //if s.lang is set to german
-        } else if(s.lang == 'de') {
-
-	        var lessThanAMinute = s.lessThanAMinuteString || "Weniger als eine Minute";
-
-	        var minShortForm = 'min';
-
-        //if s.lang is set to spanish
-        } else if(s.lang == 'es') {
-
-	        var lessThanAMinute = s.lessThanAMinuteString || "Menos de un minuto";
-
-	        var minShortForm = 'min';
-
-        //if s.lang is set to dutch
-        } else if(s.lang == 'nl') {
-
-	        var lessThanAMinute = s.lessThanAMinuteString || "Minder dan een minuut";
-
-	        var minShortForm = 'min';
-
-		//if s.lang is set to slovak
-        } else if(s.lang == 'sk') {
-
-	        var lessThanAMinute = s.lessThanAMinuteString || "Menej než minútu";
-
-	        var minShortForm = 'min';
-
-		//if s.lang is set to czech
-        } else if(s.lang == 'cz') {
-
-	        var lessThanAMinute = s.lessThanAMinuteString || "Méně než minutu";
-
-	        var minShortForm = 'min';
-
-		//if s.lang is set to Hungarian
-        } else if(s.lang == 'hu') {
-
-	        var lessThanAMinute = s.lessThanAMinuteString || "Kevesebb mint egy perc";
-
-	        var minShortForm = 'perc';
-
-    // if s.lang is set to Russian
-        } else if (s.lang == 'ru') {
-
-          var lessThanAMinute = s.lessThanAMinuteString || "Меньше минуты";
-
-          var minShortForm = 'мин';
-
-	    //if s.lang is set to Arabic
-        } else if (s.lang == 'ar') {
-
-          var lessThanAMinute = s.lessThanAMinuteString || "أقل من دقيقة";
-
-          var minShortForm = 'دقيقة';
-
-        //if s.lang is set to Danish
-        } else if(s.lang == 'da') {
-            var lessThanAMinute = s.lessThanAMinuteString || "Mindre end et minut";
-            var minShortForm = 'min';
-
-        //if s.lang is set to Icelandic
-        } else if(s.lang == 'is') {
-            var lessThanAMinute = s.lessThanAMinuteString || "Minna en eina mínútu";
-            var minShortForm = 'min';
-
-        //if s.lang is set to Norwegian
-        } else if(s.lang == 'no') {
-            var lessThanAMinute = s.lessThanAMinuteString || "Mindre enn ett minutt";
-            var minShortForm = 'min';
-
-        //if s.lang is set to Polish
-        } else if(s.lang == 'pl') {
-            var lessThanAMinute = s.lessThanAMinuteString || "Mniej niż minutę";
-            var minShortForm = 'min';
-
-        //if s.lang is set to Russian
-        } else if(s.lang == 'ru') {
-            var lessThanAMinute = s.lessThanAMinuteString || "Меньше минуты";
-            var minShortForm = 'мой';
-
-        //if s.lang is set to Swedish
-        } else if(s.lang == 'sv') {
-            var lessThanAMinute = s.lessThanAMinuteString || "Mindre än en minut";
-            var minShortForm = 'min';
-
-        //if s.lang is set to Turkish
-        } else if(s.lang == 'tr') {
-            var lessThanAMinute = s.lessThanAMinuteString || "Bir dakikadan az";
-            var minShortForm = 'dk';
-
-        //default s.lang is english
-        } else {
-
-	        var lessThanAMinute = s.lessThanAMinuteString || 'Less than a minute';
-
-	        var minShortForm = 'min';
-
-        }
-
-        var setTime = function(text) {
-
-        	if(text !== '') {
-
-		        //split text by spaces to define total words
-				var totalWords = text.trim().split(/\s+/g).length;
+				//split text by spaces to define total words
+				totalWords = o.text.trim().split(/\s+/g).length;
 
 				//define words per second based on words per minute (s.wordsPerMinute)
-				var wordsPerSecond = s.wordsPerMinute / 60;
+				wordsPerSecond = s.wordsPerMinute / 60;
 
 				//define total reading time in seconds
 				totalReadingTimeSeconds = totalWords / wordsPerSecond;
 
-				//define reading time in minutes
-				//if s.round is set to true
-				if(s.round === true) {
+				// define reading time
+				readingTimeMinutes = Math.floor(totalReadingTimeSeconds / 60);
 
-					var readingTimeMinutes = Math.round(totalReadingTimeSeconds / 60);
+				// define remaining reading time seconds
+				readingTimeSeconds = Math.round(totalReadingTimeSeconds - (readingTimeMinutes * 60));
 
-				//if s.round is set to false
-				} else {
+				// format reading time
+				readingTime = `${readingTimeMinutes}:${readingTimeSeconds}`;
 
-					var readingTimeMinutes = Math.floor(totalReadingTimeSeconds / 60);
+				// if s.round
+				if(s.round) {
 
-				}
-
-				//define remaining reading time seconds
-				var readingTimeSeconds = Math.round(totalReadingTimeSeconds - readingTimeMinutes * 60);
-
-				//if s.round is set to true
-				if(s.round === true) {
-
-					//if minutes are greater than 0
+					// if minutes are greater than 0
 					if(readingTimeMinutes > 0) {
 
-						//set reading time by the minute
+						// set reading time by the minute
 						$(s.readingTimeTarget).text(s.prependTimeString + readingTimeMinutes + ((!s.readingTimeAsNumber) ? ' ' + minShortForm : ''));
 
 					} else {
 
-						//set reading time as less than a minute
+						// set reading time as less than a minute
 						$(s.readingTimeTarget).text((!s.readingTimeAsNumber) ? s.prependTimeString + lessThanAMinute : readingTimeMinutes);
-
 					}
 
-				//if s.round is set to false
 				} else {
 
-					//format reading time
-					var readingTime = readingTimeMinutes + ':' + readingTimeSeconds;
-
-					//set reading time in minutes and seconds
+					// set reading time in minutes and seconds
 					$(s.readingTimeTarget).text(s.prependTimeString + readingTime);
-
 				}
 
-				//if word count container isn't blank or undefined
+				// if word count container isn't blank or undefined
 				if(s.wordCountTarget !== '' && s.wordCountTarget !== undefined) {
 
-					//set word count
+					// set word count
 					$(s.wordCountTarget).text(s.prependWordString + totalWords);
-
 				}
 
-				//run success callback
-				s.success.call(this);
+				readingTimeObj = {
+					wpm: s.wordsPerMinute,
+					words: totalWords,
+					eta: {
+						time: readingTime,
+						minutes: readingTimeMinutes,
+						seconds: totalReadingTimeSeconds
+					}
+				};
+
+				// run success callback
+				s.success.call(this, readingTimeObj);
 
 			} else {
 
-				//run error callback
-				s.error.call(this, 'The element is empty.');
+				// run error callback
+				s.error.call(this, {
+					error: 'The element does not contain any text'
+				});
 			}
-
 		};
 
-		//for each element
-		el.each(function() {
+		// if no element was bound
+		if(!this.length) {
 
-	        //if s.remotePath and s.remoteTarget aren't null
-	        if(s.remotePath != null && s.remoteTarget != null) {
+			// run error callback
+			s.error.call(this, {
+				error: 'The element could not be found'
+			});
 
-	        	//get contents of remote file
-	    		$.get(s.remotePath, function(data) {
+			// return so chained events can continue
+			return this;
+		}
 
-					//set time using the remote target found in the remote file
-					setTime($('<div>').html(data).find(s.remoteTarget).text());
+		// if s.lang is Arabic
+		if (s.lang == 'ar') {
+			lessThanAMinute = s.lessThanAMinuteString || "أقل من دقيقة";
+			minShortForm = 'دقيقة';
 
+		// if s.lang is Czech
+		} else if(s.lang == 'cz') {
+			lessThanAMinute = s.lessThanAMinuteString || "Méně než minutu";
+			minShortForm = 'min';
+
+		// if s.lang is Danish
+		} else if(s.lang == 'da') {
+			lessThanAMinute = s.lessThanAMinuteString || "Mindre end et minut";
+			minShortForm = 'min';
+
+		// if s.lang is German
+		} else if(s.lang == 'de') {
+			lessThanAMinute = s.lessThanAMinuteString || "Weniger als eine Minute";
+			minShortForm = 'min';
+
+		// if s.lang is Spanish
+		} else if(s.lang == 'es') {
+			lessThanAMinute = s.lessThanAMinuteString || "Menos de un minuto";
+			minShortForm = 'min';
+
+		// if s.lang is French
+		} else if(s.lang == 'fr') {
+			lessThanAMinute = s.lessThanAMinuteString || "Moins d'une minute";
+			minShortForm = 'min';
+
+		// if s.lang is Hungarian
+		} else if(s.lang == 'hu') {
+			lessThanAMinute = s.lessThanAMinuteString || "Kevesebb mint egy perc";
+			minShortForm = 'perc';
+
+		// if s.lang is Icelandic
+		} else if(s.lang == 'is') {
+			lessThanAMinute = s.lessThanAMinuteString || "Minna en eina mínútu";
+			minShortForm = 'min';
+
+		// if s.lang is Italian
+		} else if(s.lang == 'it') {
+			lessThanAMinute = s.lessThanAMinuteString || "Meno di un minuto";
+			minShortForm = 'min';
+
+		// if s.lang is Dutch
+		} else if(s.lang == 'nl') {
+			lessThanAMinute = s.lessThanAMinuteString || "Minder dan een minuut";
+			minShortForm = 'min';
+
+		// if s.lang is Norwegian
+		} else if(s.lang == 'no') {
+			lessThanAMinute = s.lessThanAMinuteString || "Mindre enn ett minutt";
+			minShortForm = 'min';
+
+		// if s.lang is Polish
+		} else if(s.lang == 'pl') {
+			lessThanAMinute = s.lessThanAMinuteString || "Mniej niż minutę";
+			minShortForm = 'min';
+
+		// if s.lang is Russian
+		} else if(s.lang == 'ru') {
+			lessThanAMinute = s.lessThanAMinuteString || "Меньше минуты";
+			minShortForm = 'мой';
+
+		// if s.lang is Slovak
+		} else if(s.lang == 'sk') {
+			lessThanAMinute = s.lessThanAMinuteString || "Menej než minútu";
+			minShortForm = 'min';
+
+		// if s.lang is Swedish
+		} else if(s.lang == 'sv') {
+			lessThanAMinute = s.lessThanAMinuteString || "Mindre än en minut";
+			minShortForm = 'min';
+
+		// if s.lang is Turkish
+		} else if(s.lang == 'tr') {
+			lessThanAMinute = s.lessThanAMinuteString || "Bir dakikadan az";
+			minShortForm = 'dk';
+
+		// default s.lang is english
+		} else {
+			lessThanAMinute = s.lessThanAMinuteString || 'Less than a minute';
+			minShortForm = 'min';
+		}
+
+		// for each element
+		el.each(function(index) {
+
+			// if s.remotePath and s.remoteTarget aren't null
+			if(s.remotePath != null && s.remoteTarget != null) {
+
+				// get contents of remote file
+				$.get(s.remotePath, function(data) {
+
+					// set time using the remote target found in the remote file
+					setTime({
+						text: $('<div>').html(data).find(s.remoteTarget).text()
+					});
 				});
 
-	        } else {
+			} else {
 
-		        //set time using the targeted element
-		        setTime(el.text());
-	        }
-        });
+				// set time using the targeted element
+				setTime({
+					text: el.text()
+				});
+			}
+		});
 
-        return totalReadingTimeSeconds;
-    }
-
-
+		return true;
+	}
 })(jQuery);
