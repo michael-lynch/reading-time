@@ -197,7 +197,7 @@ Licensed under the MIT license
 		// if s.lang is Russian
 		} else if(s.lang == 'ru') {
 			lessThanAMinute = s.lessThanAMinuteString || "Меньше минуты";
-			minShortForm = 'мой';
+			minShortForm = 'мин';
 
 		// if s.lang is Slovak
 		} else if(s.lang == 'sk') {
