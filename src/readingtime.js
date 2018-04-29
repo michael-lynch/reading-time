@@ -214,6 +214,11 @@ Licensed under the MIT license
 			lessThanAMinute = s.lessThanAMinuteString || "Bir dakikadan az";
 			minShortForm = 'dk';
 
+		// if s.lang is Ukrainian
+		} else if(s.lang == 'uk') {
+			lessThanAMinute = s.lessThanAMinuteString || "Менше хвилини";
+			minShortForm = 'хв';
+
 		// default s.lang is english
 		} else {
 			lessThanAMinute = s.lessThanAMinuteString || 'Less than a minute';
