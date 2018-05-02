@@ -236,7 +236,6 @@ Licensed under the MIT license
 					let wrapper = document.createElement('div');
 
 					wrapper.innerHTML = data;
-					$(wrapper).find('script').remove();
 
 					// set time using the remote target found in the remote file
 					setTime({
