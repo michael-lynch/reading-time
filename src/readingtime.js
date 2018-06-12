@@ -135,7 +135,7 @@ Licensed under the MIT license
 		}
 
 		// Use switch instead of ifs
-		switch (new s.lang) {
+		switch (s.lang) {
 			// if s.lang is Arabic
 			case 'ar':
         lessThanAMinute = s.lessThanAMinuteString || "أقل من دقيقة";
