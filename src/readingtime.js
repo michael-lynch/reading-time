@@ -221,7 +221,11 @@ Licensed under the MIT license
         lessThanAMinute = s.lessThanAMinuteString || "Менше хвилини";
         minShortForm = 'хв';
         break;
-			
+			// if s.lang is Greek
+			case 'el':
+        lessThanAMinute = s.lessThanAMinuteString || 'Λιγότερο από λεπτό';
+        minShortForm = 'λεπτά';
+        break;
 			// default s.lang in english
 			default:
         lessThanAMinute = s.lessThanAMinuteString || 'Less than a minute';
