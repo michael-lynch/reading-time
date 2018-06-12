@@ -134,96 +134,99 @@ Licensed under the MIT license
 			return this;
 		}
 
-		// if s.lang is Arabic
-		if (s.lang == 'ar') {
-			lessThanAMinute = s.lessThanAMinuteString || "أقل من دقيقة";
-			minShortForm = 'دقيقة';
-
-		// if s.lang is Czech
-		} else if(s.lang == 'cz') {
-			lessThanAMinute = s.lessThanAMinuteString || "Méně než minutu";
-			minShortForm = 'min';
-
-		// if s.lang is Danish
-		} else if(s.lang == 'da') {
-			lessThanAMinute = s.lessThanAMinuteString || "Mindre end et minut";
-			minShortForm = 'min';
-
-		// if s.lang is German
-		} else if(s.lang == 'de') {
-			lessThanAMinute = s.lessThanAMinuteString || "Weniger als eine Minute";
-			minShortForm = 'min';
-
-		// if s.lang is Spanish
-		} else if(s.lang == 'es') {
-			lessThanAMinute = s.lessThanAMinuteString || "Menos de un minuto";
-			minShortForm = 'min';
-
-		// if s.lang is French
-		} else if(s.lang == 'fr') {
-			lessThanAMinute = s.lessThanAMinuteString || "Moins d'une minute";
-			minShortForm = 'min';
-
-		// if s.lang is Hungarian
-		} else if(s.lang == 'hu') {
-			lessThanAMinute = s.lessThanAMinuteString || "Kevesebb mint egy perc";
-			minShortForm = 'perc';
-
-		// if s.lang is Icelandic
-		} else if(s.lang == 'is') {
-			lessThanAMinute = s.lessThanAMinuteString || "Minna en eina mínútu";
-			minShortForm = 'min';
-
-		// if s.lang is Italian
-		} else if(s.lang == 'it') {
-			lessThanAMinute = s.lessThanAMinuteString || "Meno di un minuto";
-			minShortForm = 'min';
-
-		// if s.lang is Dutch
-		} else if(s.lang == 'nl') {
-			lessThanAMinute = s.lessThanAMinuteString || "Minder dan een minuut";
-			minShortForm = 'min';
-
-		// if s.lang is Norwegian
-		} else if(s.lang == 'no') {
-			lessThanAMinute = s.lessThanAMinuteString || "Mindre enn ett minutt";
-			minShortForm = 'min';
-
-		// if s.lang is Polish
-		} else if(s.lang == 'pl') {
-			lessThanAMinute = s.lessThanAMinuteString || "Mniej niż minutę";
-			minShortForm = 'min';
-
-		// if s.lang is Russian
-		} else if(s.lang == 'ru') {
-			lessThanAMinute = s.lessThanAMinuteString || "Меньше минуты";
-			minShortForm = 'мин';
-
-		// if s.lang is Slovak
-		} else if(s.lang == 'sk') {
-			lessThanAMinute = s.lessThanAMinuteString || "Menej než minútu";
-			minShortForm = 'min';
-
-		// if s.lang is Swedish
-		} else if(s.lang == 'sv') {
-			lessThanAMinute = s.lessThanAMinuteString || "Mindre än en minut";
-			minShortForm = 'min';
-
-		// if s.lang is Turkish
-		} else if(s.lang == 'tr') {
-			lessThanAMinute = s.lessThanAMinuteString || "Bir dakikadan az";
-			minShortForm = 'dk';
-
-		// if s.lang is Ukrainian
-		} else if(s.lang == 'uk') {
-			lessThanAMinute = s.lessThanAMinuteString || "Менше хвилини";
-			minShortForm = 'хв';
-
-		// default s.lang is english
-		} else {
-			lessThanAMinute = s.lessThanAMinuteString || 'Less than a minute';
-			minShortForm = 'min';
-		}
+		// Use switch instead of ifs
+		switch (new s.lang) {
+			// if s.lang is Arabic
+			case 'ar':
+        lessThanAMinute = s.lessThanAMinuteString || "أقل من دقيقة";
+        minShortForm = 'دقيقة';
+        break;
+			// if s.lang is Czech
+			case 'cz':
+        lessThanAMinute = s.lessThanAMinuteString || "Méně než minutu";
+        minShortForm = 'min';
+        break;
+			// if s.lang is Danish
+			case 'da':
+        lessThanAMinute = s.lessThanAMinuteString || "Mindre end et minut";
+        minShortForm = 'min';
+        break;
+			// if s.lang is German
+      case 'de':
+        lessThanAMinute = s.lessThanAMinuteString || "Weniger als eine Minute";
+        minShortForm = 'min';
+        break;
+			// if s.lang is Spanish
+      case 'es':
+        lessThanAMinute = s.lessThanAMinuteString || "Menos de un minuto";
+        minShortForm = 'min';
+        break;
+			// if s.lang is French
+      case 'fr':
+        lessThanAMinute = s.lessThanAMinuteString || "Moins d'une minute";
+        minShortForm = 'min';
+        break;
+			// if s.lang is Hungarian
+      case 'hu':
+        lessThanAMinute = s.lessThanAMinuteString || "Kevesebb mint egy perc";
+        minShortForm = 'perc';
+        break;
+			// if s.lang is Icelandic
+      case 'is':
+        lessThanAMinute = s.lessThanAMinuteString || "Minna en eina mínútu";
+        minShortForm = 'min';
+        break;
+			// if s.lang is Italian
+      case 'it':
+        lessThanAMinute = s.lessThanAMinuteString || "Meno di un minuto";
+        minShortForm = 'min';
+        break;
+			// if s.lang is Dutch
+      case 'nl':
+        lessThanAMinute = s.lessThanAMinuteString || "Minder dan een minuut";
+        minShortForm = 'min';
+        break;
+			// if s.lang is Norwegian
+      case 'no':
+        lessThanAMinute = s.lessThanAMinuteString || "Mindre enn ett minutt";
+        minShortForm = 'min';
+        break;
+			// if s.lang is Polish
+      case 'pl':
+        lessThanAMinute = s.lessThanAMinuteString || "Mniej niż minutę";
+        minShortForm = 'min';
+        break;
+			// if s.lang is Russian
+      case 'ru':
+        lessThanAMinute = s.lessThanAMinuteString || "Меньше минуты";
+        minShortForm = 'мин';
+        break;
+			// if s.lang is Slovak
+      case 'sk':
+        lessThanAMinute = s.lessThanAMinuteString || "Menej než minútu";
+        minShortForm = 'min';
+        break;
+			// if s.lang is Swedish
+      case 'sv':
+        lessThanAMinute = s.lessThanAMinuteString || "Mindre än en minut";
+        minShortForm = 'min';
+        break;
+			// if s.lang is Turkish
+      case 'tr':
+        lessThanAMinute = s.lessThanAMinuteString || "Bir dakikadan az";
+        minShortForm = 'dk';
+        break;
+			// if s.lang is Ukrainian
+      case 'uk':
+        lessThanAMinute = s.lessThanAMinuteString || "Менше хвилини";
+        minShortForm = 'хв';
+        break;
+			
+			// default s.lang in english
+			default:
+        lessThanAMinute = s.lessThanAMinuteString || 'Less than a minute';
+        minShortForm = 'min';
+    }
 
 		// for each element
 		el.each(function(index) {
