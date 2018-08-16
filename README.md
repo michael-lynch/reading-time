@@ -78,7 +78,7 @@ readingTimeTarget: "id / class / element"
 <br />A boolean value that indicates whether or not the estimated reading time should be rounded to the closest minute (default: true).
 </li>
 
-<li>lang: "en / fr / de / es / nl / sk / cz / ru"
+<li>lang: "en / fr / de / es / nl / sk / cz / ru / chn"
 <br />A two letter string that indicates the language to be used (default: "en").
 </li>
 
