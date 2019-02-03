@@ -4,7 +4,7 @@ Dependencies: jQuery
 Author: Michael Lynch
 Author URL: http://michaelynch.com
 Date Created: August 14, 2013
-Date Updated: February 28, 2018
+Date Updated: April 30, 2018
 Licensed under the MIT license
 */
 
@@ -240,10 +240,13 @@ Licensed under the MIT license
 
 				// get contents of remote file
 				$.get(s.remotePath, function(data) {
+					let wrapper = document.createElement('div');
+
+					wrapper.innerHTML = data;
 
 					// set time using the remote target found in the remote file
 					setTime({
-						text: $('<div>').html(data).find(s.remoteTarget).text()
+						text: $(wrapper).find(s.remoteTarget).text()
 					});
 				});
 
