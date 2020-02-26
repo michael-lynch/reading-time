@@ -54,8 +54,8 @@ Licensed under the MIT license
 
 			if(o.text !== '') {
 				if (s.lang == "zh") {
-                	let text = o.text.trim();
-                	// step 1: count the number of Chinese characters
+					let text = o.text.trim();
+					// step 1: count the number of Chinese characters
 					const charArray = text.match(/[\u4e00-\u9fa5]/g);
 					let charCount = 0;
 					if (charArray != null) {
