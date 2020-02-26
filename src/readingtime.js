@@ -51,6 +51,7 @@ Licensed under the MIT license
 		const s = plugin.settings;
 
 		const setTime = function(o) {
+
 			if(o.text !== '') {
 				if (s.lang == "zh") {
                 	let text = o.text.trim();
@@ -69,10 +70,10 @@ Licensed under the MIT license
 					// step 5: count the number of total English words
 					const totalEnWords = text.trim().split(/\s+/g).length;
 					totalWords = totalEnWords + charCount;
-                } else {
-                	//split text by spaces to define total words
-                    totalWords = o.text.trim().split(/\s+/g).length;
-                }
+				} else {
+					//split text by spaces to define total words
+					totalWords = o.text.trim().split(/\s+/g).length;
+				}
 
 				//define words per second based on words per minute (s.wordsPerMinute)
 				wordsPerSecond = s.wordsPerMinute / 60;
@@ -88,7 +89,6 @@ Licensed under the MIT license
 
 				// format reading time
 				readingTime = `${readingTimeMinutes}:${readingTimeSeconds}`;
-
 				// if s.round
 				if(s.round) {
 
