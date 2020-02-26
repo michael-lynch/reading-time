@@ -51,7 +51,6 @@ Licensed under the MIT license
 		const s = plugin.settings;
 
 		const setTime = function(o) {
-			console.log(s.lang)
 			if(o.text !== '') {
 				if (s.lang == "zh") {
                 	let text = o.text.trim();
@@ -68,7 +67,6 @@ Licensed under the MIT license
                     // step 4:replace special characters with blank
 					text = text.replace(/\W+/g, " ");
                     // step 5: count the number of total English words
-					console.log(text)
 					const totalEnWords = text.trim().split(/\s+/g).length;
 					totalWords = totalEnWords + charCount;
                 } else {
