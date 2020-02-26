@@ -54,19 +54,19 @@ Licensed under the MIT license
 			if(o.text !== '') {
 				if (s.lang == "zh") {
                 	let text = o.text.trim();
-                    // step 1: count the number of Chinese characters
+                	// step 1: count the number of Chinese characters
 					const charArray = text.match(/[\u4e00-\u9fa5]/g);
 					let charCount = 0;
 					if (charArray != null) {
 						charCount = charArray.length;
 					}
-                    // step 2: replace all the Chinese characters with blank
+					// step 2: replace all the Chinese characters with blank
 					text = text.replace(/[\u4e00-\u9fa5]/g, " ");
-                    // step 3:replace newlines with blank
+					// step 3:replace newlines with blank
 					text = text.replace(/[\r\n]/g, " ");
-                    // step 4:replace special characters with blank
+					// step 4:replace special characters with blank
 					text = text.replace(/\W+/g, " ");
-                    // step 5: count the number of total English words
+					// step 5: count the number of total English words
 					const totalEnWords = text.trim().split(/\s+/g).length;
 					totalWords = totalEnWords + charCount;
                 } else {
