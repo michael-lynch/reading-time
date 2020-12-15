@@ -243,6 +243,11 @@ Licensed under the MIT license
         lessThanAMinute = s.lessThanAMinuteString || 'Λιγότερο από λεπτό';
         minShortForm = 'λεπτά';
         break;
+            // if s.lang is Portuguese
+            case 'pt-BR':
+        lessThanAMinute = s.lessThanAMinuteString || 'Menos de um minuto';
+        minShortForm = 'min';
+        break;
 			// default s.lang in english
 			default:
         lessThanAMinute = s.lessThanAMinuteString || 'Less than a minute';
