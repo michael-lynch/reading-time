@@ -247,6 +247,11 @@ Licensed under the MIT license
             case 'pt-BR':
         lessThanAMinute = s.lessThanAMinuteString || 'Menos de um minuto';
         minShortForm = 'min';
+		break;
+			// if s.lang is Korean
+			case 'kr':
+		lessThanAMinute = s.lessThanAMinuteString || '1분 이하';
+		minShortForm = '분';
         break;
 			// default s.lang in english
 			default:
