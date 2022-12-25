@@ -155,109 +155,119 @@ Licensed under the MIT license
 		switch (s.lang) {
 			// if s.lang is Arabic
 			case 'ar':
-        lessThanAMinute = s.lessThanAMinuteString || "أقل من دقيقة";
-        minShortForm = 'دقيقة';
-        break;
+        			lessThanAMinute = s.lessThanAMinuteString || "أقل من دقيقة";
+				minShortForm = 'دقيقة';
+				break;
 			// if s.lang is Czech
 			case 'cz':
-        lessThanAMinute = s.lessThanAMinuteString || "Méně než minutu";
-        minShortForm = 'min';
-        break;
+				lessThanAMinute = s.lessThanAMinuteString || "Méně než minutu";
+				minShortForm = 'min';
+				break;
 			// if s.lang is Danish
 			case 'da':
-        lessThanAMinute = s.lessThanAMinuteString || "Mindre end et minut";
-        minShortForm = 'min';
-        break;
+				lessThanAMinute = s.lessThanAMinuteString || "Mindre end et minut";
+				minShortForm = 'min';
+				break;
 			// if s.lang is German
-      case 'de':
-        lessThanAMinute = s.lessThanAMinuteString || "Weniger als eine Minute";
-        minShortForm = 'min';
-        break;
+			case 'de':
+				lessThanAMinute = s.lessThanAMinuteString || "Weniger als eine Minute";
+				minShortForm = 'min';
+				break;
 			// if s.lang is Spanish
-      case 'es':
-        lessThanAMinute = s.lessThanAMinuteString || "Menos de un minuto";
-        minShortForm = 'min';
-        break;
+			case 'es':
+				lessThanAMinute = s.lessThanAMinuteString || "Menos de un minuto";
+				minShortForm = 'min';
+				break;
 			// if s.lang is French
-      case 'fr':
-        lessThanAMinute = s.lessThanAMinuteString || "Moins d'une minute";
-        minShortForm = 'min';
-        break;
+			case 'fr':
+				lessThanAMinute = s.lessThanAMinuteString || "Moins d'une minute";
+				minShortForm = 'min';
+				break;
 			// if s.lang is Hungarian
-      case 'hu':
-        lessThanAMinute = s.lessThanAMinuteString || "Kevesebb mint egy perc";
-        minShortForm = 'perc';
-        break;
+			case 'hu':
+				lessThanAMinute = s.lessThanAMinuteString || "Kevesebb mint egy perc";
+				minShortForm = 'perc';
+				break;
 			// if s.lang is Icelandic
-      case 'is':
-        lessThanAMinute = s.lessThanAMinuteString || "Minna en eina mínútu";
-        minShortForm = 'min';
-        break;
+			case 'is':
+				lessThanAMinute = s.lessThanAMinuteString || "Minna en eina mínútu";
+				minShortForm = 'min';
+				break;
 			// if s.lang is Italian
-      case 'it':
-        lessThanAMinute = s.lessThanAMinuteString || "Meno di un minuto";
-        minShortForm = 'min';
-        break;
+			case 'it':
+				lessThanAMinute = s.lessThanAMinuteString || "Meno di un minuto";
+				minShortForm = 'min';
+				break;
 			// if s.lang is Dutch
-      case 'nl':
-        lessThanAMinute = s.lessThanAMinuteString || "Minder dan een minuut";
-        minShortForm = 'min';
-        break;
+			case 'nl':
+				lessThanAMinute = s.lessThanAMinuteString || "Minder dan een minuut";
+				minShortForm = 'min';
+				break;
 			// if s.lang is Norwegian
-      case 'no':
-        lessThanAMinute = s.lessThanAMinuteString || "Mindre enn ett minutt";
-        minShortForm = 'min';
-        break;
+			case 'no':
+				lessThanAMinute = s.lessThanAMinuteString || "Mindre enn ett minutt";
+				minShortForm = 'min';
+				break;
 			// if s.lang is Polish
-      case 'pl':
-        lessThanAMinute = s.lessThanAMinuteString || "Mniej niż minutę";
-        minShortForm = 'min';
-        break;
+			case 'pl':
+				lessThanAMinute = s.lessThanAMinuteString || "Mniej niż minutę";
+				minShortForm = 'min';
+				break;
 			// if s.lang is Russian
-      case 'ru':
-        lessThanAMinute = s.lessThanAMinuteString || "Меньше минуты";
-        minShortForm = 'мин';
-        break;
+			case 'ru':
+				lessThanAMinute = s.lessThanAMinuteString || "Меньше минуты";
+				minShortForm = 'мин';
+				break;
 			// if s.lang is Slovak
-      case 'sk':
-        lessThanAMinute = s.lessThanAMinuteString || "Menej než minútu";
-        minShortForm = 'min';
-        break;
+			case 'sk':
+				lessThanAMinute = s.lessThanAMinuteString || "Menej než minútu";
+				minShortForm = 'min';
+				break;
 			// if s.lang is Swedish
-      case 'sv':
-        lessThanAMinute = s.lessThanAMinuteString || "Mindre än en minut";
-        minShortForm = 'min';
-        break;
+			case 'sv':
+				lessThanAMinute = s.lessThanAMinuteString || "Mindre än en minut";
+				minShortForm = 'min';
+				break;
 			// if s.lang is Turkish
-      case 'tr':
-        lessThanAMinute = s.lessThanAMinuteString || "Bir dakikadan az";
-        minShortForm = 'dk';
-        break;
+			case 'tr':
+				lessThanAMinute = s.lessThanAMinuteString || "Bir dakikadan az";
+				minShortForm = 'dk';
+				break;
 			// if s.lang is Ukrainian
-      case 'uk':
-        lessThanAMinute = s.lessThanAMinuteString || "Менше хвилини";
-        minShortForm = 'хв';
-        break;
+			case 'uk':
+				lessThanAMinute = s.lessThanAMinuteString || "Менше хвилини";
+				minShortForm = 'хв';
+				break;
 			// if s.lang is Greek
 			case 'el':
-        lessThanAMinute = s.lessThanAMinuteString || 'Λιγότερο από λεπτό';
-        minShortForm = 'λεπτά';
-        break;
-            // if s.lang is Portuguese
-            case 'pt-BR':
-        lessThanAMinute = s.lessThanAMinuteString || 'Menos de um minuto';
-        minShortForm = 'min';
-		break;
+				lessThanAMinute = s.lessThanAMinuteString || 'Λιγότερο από λεπτό';
+				minShortForm = 'λεπτά';
+				break;
+            		// if s.lang is Portuguese
+			case 'pt-BR':
+				lessThanAMinute = s.lessThanAMinuteString || 'Menos de um minuto';
+				minShortForm = 'min';
+				break;
 			// if s.lang is Korean
 			case 'kr':
-		lessThanAMinute = s.lessThanAMinuteString || '1분 이하';
-		minShortForm = '분';
-        break;
+				lessThanAMinute = s.lessThanAMinuteString || '1분 이하';
+				minShortForm = '분';
+				break;
+			// if s.lang is Chinese
+			case 'zh':
+				lessThanAMinute = s.lessThanAMinuteString || '不到 1 分鐘';
+				minShortForm = '分';
+				break;
+			// if s.lang is Japanese
+			case 'ja':
+				lessThanAMinute = s.lessThanAMinuteString || '1 分未満';
+				minShortForm = '分';
+				break;
 			// default s.lang in english
 			default:
-        lessThanAMinute = s.lessThanAMinuteString || 'Less than a minute';
-        minShortForm = 'min';
-    }
+				lessThanAMinute = s.lessThanAMinuteString || 'Less than a minute';
+        			minShortForm = 'min';
+		}
 
 		// for each element
 		el.each(function(index) {
